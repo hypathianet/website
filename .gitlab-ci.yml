@@ -1,0 +1,52 @@
+stages:
+    - render
+    - dockerize
+    - deploy
+
+variables:
+ DOCKER_HOST: "tcp://localhost:2375"
+ DOCKER_REGISTRY: "nexus.informatik.haw-hamburg.de"
+ SERVICE_NAME: "hypathia-website"
+ HUGO_VERSION: "0.36.1"
+ HUGO_UGLYURLS: "true"
+
+render_site:
+  stage: render
+  image: nexus.informatik.haw-hamburg.de/ubuntu:16.04
+  script:
+    - apt-get update && apt-get install -y wget
+    - wget --verbose https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+    - tar -xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+    - chmod +x ./hugo
+    - mkdir -p page-render
+    - ./hugo -s icc -d ../page-render
+    - ls -l page-render/
+  artifacts:
+    paths:
+      - page-render/
+
+
+createImage:
+ stage: dockerize
+ image: nexus.informatik.haw-hamburg.de/docker:stable-dind
+ services:
+   - nexus.informatik.haw-hamburg.de/docker:stable-dind
+ script:
+   - docker login -u $NEXUS_USER -p $NEXUS_PW $DOCKER_REGISTRY
+   - docker build -t $SERVICE_NAME:latest .
+   - docker tag $SERVICE_NAME:latest $DOCKER_REGISTRY/$SERVICE_NAME:$CI_PIPELINE_ID
+   - docker tag $SERVICE_NAME:latest $DOCKER_REGISTRY/$SERVICE_NAME:latest
+   - docker push $DOCKER_REGISTRY/$SERVICE_NAME:$CI_PIPELINE_ID
+   - docker push $DOCKER_REGISTRY/$SERVICE_NAME:latest
+
+deploy_image:
+  environment:
+    name: ICC-K8s
+  stage: deploy
+  only:
+    refs:
+      - master
+  image: nexus.informatik.haw-hamburg.de/kubectl:v1.9.3
+  script:
+  - sed "s/nexus.informatik.haw-hamburg.de\/$SERVICE_NAME/nexus.informatik.haw-hamburg.de\/$SERVICE_NAME:$CI_PIPELINE_ID/g" deploy.yaml> deploy_new.yaml
+  - kubectl apply -f deploy_new.yaml

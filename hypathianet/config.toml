@@ -1,0 +1,25 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "hypathia.net"
+theme = "kube"
+description = "hypathia.net a kubernetes based container management solution aimed at the specific needs of academic organisations."
+Paginate = 4
+[Params]
+  RSSLink = "/index.xml"
+  author = "Lutz Behnke" # add your company name
+  github = "hypathianet" # add your github profile name
+  twitter = "cypherfox" # add your twitter profile
+  email = "lutz.behnke@gmx.de"
+
+[[menu.main]]
+    name = "Docs"
+    weight = -100
+    url = "/docs/"
+[[menu.main]]
+    name = "Blog"
+    weight = -100
+    url = "/blog/"
+[[menu.main]]
+    name = "Faq"
+    weight = -100
+    url = "/faq/"
