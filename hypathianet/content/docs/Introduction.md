@@ -10,10 +10,10 @@ toc = true
 
 ### Mission
 
-hypathia.net aims to provide a blueprint for operating a service to provide 
+hypathia.net aims to provide a blueprint for operating a service to provide
 cloud based computing resources in a self-service manner. It presents an opionated
 selection of components, configurations and practices tailored to environments that
-have a specific set of requirements, often found at academic institutions. 
+have a specific set of requirements, often found at academic institutions.
 
 
 ### Requirements
@@ -30,16 +30,16 @@ These are the main requirements that shaped the specific characteristics of hypa
  <dt>Minimal support resources available </dt>
  <dd>All functions of the cluster must be made available to the users via self-service web interfaces, or be completely automated. Users should also be able to help themselves or each other, so tools for building a vibrant community must also be supported.</dd>
 </dl>
- 
+
 ### Aims
 
 There are a number of further goals that the design of the cluster strives to support:
 
 * **Secure**. This covers all aspects, from isolating one workload from the next, to ensuring that the cluster is sufficiently hardened against external and internal denial-of-service attacks. All communication should be done via encrypted and mutually authenticated TLS links.
 * **Stable**. Resource scarcity may not be the result of an intentional attack, but rather the result of a massive load test by a research group. Sufficient limits and quotas must ensure that all users can work in parallel without interruption. Scarce resources must be scheduled in a transparent manner that is understood by the parties competing for use.
-* **Use of GitOps principles** The configuration of the cluster must be the result of a versioned  set of instructions that can be compared and distributed between hypathia.net installation. No pets allowed inside. 
+* **Use of GitOps principles** The configuration of the cluster must be the result of a versioned  set of instructions that can be compared and distributed between hypathia.net installation. No pets allowed inside.
 
-<center>![No Pets allowed](/img/docs/introduction/no_pets_allowed.png "No Pets allowed")</center>
+<img style="width: 8em; display: block; margin-left: auto; margin-right: auto;" alt="No Pets allowed" src="/img/docs/introduction/no_pets_allowed.png"/>
 
 ### Resultant Architecture
 
