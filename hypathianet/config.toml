@@ -4,12 +4,33 @@ title = "hypathia.net"
 theme = "kube"
 description = "hypathia.net a kubernetes based container management solution aimed at the specific needs of academic organisations."
 Paginate = 4
+
+DefaultContentLanguage = "en"
+copyright = "Everything is mine"
+
+[languages]
+  [languages.en]
+    title = "My blog"
+    weight = 1
+    [languages.en.params]
+      linkedin = "english-link"
+  [languages.de]
+    title = "Mein blog"
+    weight = 2
+    [languages.fr.params]
+      linkedin = "lien-francais"
+      [languages.fr.params.navigation]
+        help = "Aide"
+
 [Params]
   RSSLink = "/index.xml"
   author = "Lutz Behnke" # add your company name
   github = "hypathianet" # add your github profile name
   twitter = "cypherfox" # add your twitter profile
   email = "lutz.behnke@gmx.de"
+
+ [params.navigation]
+    help = "Help"
 
 [[menu.main]]
     name = "Docs"
