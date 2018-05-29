@@ -1,4 +1,4 @@
-language: go
+language: bash
 
 go:
     - "1.9"
