@@ -23,7 +23,7 @@ before_script:
 
 script:
     - mkdir -p public
-    - ./hugo -s icc -d ./public
+    - ./hugo -s hypathianet -d ./public
     - ls -l ./public
 
 after_success:
