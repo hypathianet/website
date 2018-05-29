@@ -18,9 +18,13 @@ before_install:
 
 before_script:
     - wget --verbose https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+    - tar -xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+    - chmod +x ./hugo
 
 script:
-    - hugo
+    - mkdir -p public
+    - ./hugo -s icc -d ./public
+    - ls -l ./public
 
 after_success:
     - echo "hypathia.net" > ./public/CNAME
