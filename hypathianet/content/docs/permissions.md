@@ -24,3 +24,6 @@ User organize themself by creating projects and groups in Gitlab
 
 ### Service Accounts
 
+### Capabilities
+
+The required capabilities for Conduit (a PSP with CAP_NET_ADM activated) are made availabe via a special service account `conduit`. Deployments that wish to use the Service Mesh must assign the service account in der deployment description. 
