@@ -5,7 +5,9 @@
     <div id="hero">
       <h1> {{ .Title}} </h1>
       <p class="hero-lead">
+        {{if .Params.bref }}
            {{ .Params.bref | safeHTML }}.
+        {{end }}
       </p>
 
     </div> 
