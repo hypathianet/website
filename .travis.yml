@@ -23,9 +23,15 @@ before_script:
 
 script:
     - mkdir -p public
-    - ./hugo -s hypathianet -d ./public
+    - ./hugo -s hypathianet -d ../public
     - ls -l ./public
 
-after_success:
-    - echo "hypathia.net" > ./public/CNAME
-    - ./scripts/deploy.sh
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  local-dir: public
+  fqdn: hypthia.net
+  on:
+    branch: master
