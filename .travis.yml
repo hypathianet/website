@@ -31,7 +31,7 @@ deploy:
   skip-cleanup: true
   repo: hypathianet/hypathia.github.io
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
+  keep-history: false
   local-dir: public
   fqdn: hypthia.net
   on:
