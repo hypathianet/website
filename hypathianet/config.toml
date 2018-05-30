@@ -35,12 +35,12 @@ copyright = "Everything is mine"
 [[menu.main]]
     name = "Docs"
     weight = -100
-    url = "/docs/"
+    url = "/docs"
 [[menu.main]]
     name = "Blog"
     weight = -100
-    url = "/blog/"
+    url = "/blog"
 [[menu.main]]
     name = "Faq"
     weight = -100
-    url = "/faq/"
+    url = "/faq"
