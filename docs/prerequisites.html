@@ -6,9 +6,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>  </title>
+  <title> Prerequisites </title>
 
   
+  <meta name="description" content="Technical prerequisites and recommended hardware"> 
   
   
   
@@ -20,16 +21,16 @@
   <meta name="author" content="Lutz Behnke">
 
 
-  <meta property="og:title" content="" />
-<meta property="og:description" content="You will need
- a network with internet access as well as a sufficient number of available IP adresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. a DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). entries for all your users in an Directory System that allows access via LDAP." />
+  <meta property="og:title" content="Prerequisites" />
+<meta property="og:description" content="Technical prerequisites and recommended hardware" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/prerequisites.html" />
 
 
 
+<meta property="article:published_time" content="2018-05-30T16:29:59&#43;02:00"/>
 
-
+<meta property="article:modified_time" content="2018-05-30T16:29:59&#43;02:00"/>
 
 <meta property="og:site_name" content="My blog" />
 
@@ -108,21 +109,47 @@
   <main>
   <div id="main">
     <div id="hero">
-      <h1>  </h1>
+      <h1> Prerequisites </h1>
       <p class="hero-lead">
+        
+           While hypathia.net aims to be as self contained as possible, there are some infrastructure elements that need to be provided. While a test installation is possible on virtual machines, a production environment is targeted to run on dedicated hardware. This section includes a purchase recommendation and the information that motivated it..
         
       </p>
 
     </div> 
     <div id="kube-component" class="content">
     
+<nav id="contents">
+    <ol class="js-toc">
+    </ol>
+</nav>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
 
-    <p>You will need</p>
+tocSelector: '.js-toc',
+
+contentSelector: '.content',
+
+headingSelector: 'h3'
+})
+}
+);
+</script>
+
+
+
+    
+
+<h3 id="infrastructure-environment">Infrastructure Environment</h3>
+
+<p>You will need</p>
 
 <ul>
-<li>a network with internet access as well as a sufficient number of available IP adresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart.</li>
+<li>a network with Internet access as well as a sufficient number of available IP addresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart.</li>
 <li>a DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com).</li>
-<li>entries for all your users in an Directory System that allows access via LDAP. Each user entry must have at least the user name, the full name, the email-address and the password of the user (the passwort not directly readable, but in such a way that it enables the bind operation with the LDAP server).</li>
+<li>entries for all your users in an Directory System that allows access via LDAP. Each user entry must have at least the user name, the full name, the email-address and the password of the user (the password not directly readable, but in such a way that it enables the <code>bind</code> operation with the LDAP server).</li>
 <li>Either a sufficient number of physical hardware machines or the ability to create virtual machines of the required size. Also note, that the resource requirements of these machines will vary widely. Not all need to be expensive high-power systems. But some have specific requirements that will influence their performance in specific ways. E.g. the etcd nodes need only 1-2 cores, and 8 Gig of RAM, but are extremely sensitive to IO latency.</li>
 </ul>
 
@@ -142,6 +169,34 @@
 <li>PowerDNS</li>
 <li>Matchbox</li>
 <li>HA Proxy</li>
+</ul>
+
+<h3 id="hardware-recomendation">Hardware Recomendation</h3>
+
+<p>While the specific hardware for a hypathia.net cluster has to be a decision, each organisation needs to make on their own. Below is a list of specific machines that represent the current optimum available for purchase. This list may change. Below the list, you will find more details on what influences shaped the selection, so that you may adapt it to your needs more easily.</p>
+
+<p>Generally the machines are selected to fullfill the following aims:</p>
+
+<ul>
+<li>Server-class hardware with as few vendor specific features as possible. <a href="https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface">IPMI</a> for management is a public standard and is absolutely sufficient for the intended purpose of the system.</li>
+<li>Low space requirements and sensible power requirements. While normally rack space costs money and is an axis of optimization, rack space in an on-prem &ldquo;datacenters&rdquo; of many universities is even more limited and so is available power, especially managed and backed up by an Uninteruptable Power Supply (UPS), as well as the required cooling to remove the energy after use.</li>
+</ul>
+
+<h4 id="machines">Machines</h4>
+
+<h5 id="network">Network</h5>
+
+<h5 id="compute-node">Compute Node</h5>
+
+<h5 id="storage-node">Storage Node</h5>
+
+<h5 id="gpu-node">GPU Node</h5>
+
+<h4 id="further-reading">Further Reading</h4>
+
+<ul>
+<li>Initial discussion about the purchase of server hardware for <a href="https://news.ycombinator.com/item?id=13153031">GitLab.com Server Hardware</a></li>
+<li>Consolidated information on a GitLab blog pos: <a href="https://about.gitlab.com/2016/12/11/proposed-server-purchase-for-gitlab-com/">Proposed Server Purchase for GitLab.com</a></li>
 </ul>
 
 

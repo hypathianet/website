@@ -18,9 +18,19 @@
       <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
       
       <guid>/docs/introduction.html</guid>
-      <description>Mission hypathia.net aims to provide a blueprint for operating a service to provide cloud based computing resources in a self-service manner. It presents an opionated selection of components, configurations and practices tailored to environments that have a specific set of requirements, often found at academic institutions.
-Requirements These are the main requirements that shaped the specific characteristics of hypathia.net:
- The organisation cannot use computing resources of a public cloud provider This may be due to procurement rules, legal obligations or the wish to run highly sensitiver workloads in-house, rather than on hardware that the organisation has virtually no control over.</description>
+      <description>Mission hypathia.net aims to provide a blueprint for operating a service to provide cloud based computing resources in a self-service manner. It presents an opinionated selection of components, configurations and practices tailored to environments that have a specific set of requirements, often found at academic institutions.
+Assumed Requirements These are the main requirements that shaped the specific characteristics of hypathia.net:
+ The organisation cannot use computing resources of a public cloud provider This may be due to procurement rules, legal obligations or the wish to run highly sensitive workloads in-house, rather than on hardware that the organization has virtually no control over.</description>
+    </item>
+    
+    <item>
+      <title>Prerequisites</title>
+      <link>/docs/prerequisites.html</link>
+      <pubDate>Wed, 30 May 2018 16:29:59 +0200</pubDate>
+      
+      <guid>/docs/prerequisites.html</guid>
+      <description>Infrastructure Environment You will need
+ a network with Internet access as well as a sufficient number of available IP addresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. a DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). entries for all your users in an Directory System that allows access via LDAP.</description>
     </item>
     
     <item>
@@ -71,16 +81,6 @@ Further Links Alternatives  Linkerd Conduit Istio  </description>
       <guid>/docs/references.html</guid>
       <description>Components of th hypathia.net Kubernetes (Kubernetes.io) A orchestration plattwork to help manage container based application.
 Other Tools for Computational Science Joint Roadmap for Open Science Tools (JROST.org) A community working on a joint roadmap for open science tools.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/docs/prerequisites.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/prerequisites.html</guid>
-      <description>You will need
- a network with internet access as well as a sufficient number of available IP adresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. a DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). entries for all your users in an Directory System that allows access via LDAP.</description>
     </item>
     
     <item>
