@@ -11,18 +11,19 @@ toc = true
 ### Mission
 
 hypathia.net aims to provide a blueprint for operating a service to provide
-cloud based computing resources in a self-service manner. It presents an opionated
+cloud based computing resources in a self-service manner. It presents an opinionated
 selection of components, configurations and practices tailored to environments that
 have a specific set of requirements, often found at academic institutions.
 
 
-### Requirements
+### Assumed Requirements
 
 These are the main requirements that shaped the specific characteristics of hypathia.net:
 
 <dl>
  <dt>The organisation cannot use computing resources of a public cloud provider</dt>
- <dd>This may be due to procurement rules, legal obligations or the wish to run highly sensitiver workloads in-house, rather than on hardware that the organisation has virtually no control over.</dd>
+ <dd>This may be due to procurement rules, legal obligations or the wish to run highly 
+ sensitive workloads in-house, rather than on hardware that the organization has virtually no control over.</dd>
  <dt>The smallest workloads can be <em>very</em> small.</dt>
  <dd>While a cluster build from hypathia.net can run applications that span hundreds of nodes, it will also efficiently handle minimalistic experiments that consist of a single web-page, requested by a single user.</dd>
  <dt>Users cannot be assumed to be able to run their own cluster</dt>
@@ -43,8 +44,9 @@ There are a number of further goals that the design of the cluster strives to su
 
 ### Resultant Architecture
 
-* Gitlab as main user interface for group management and version control, collaboration and communication.
-* Kubernetes in a multi-tenant configuration for orchestrating containers based applications
-* Container Linux as operating system for nodes.
-* Ceph as storage solution
-* LDAP for password and identity management.
+* [Gitlab](https://about.gitlab.com) as main user interface for group management and version control, collaboration and communication. It also acts as the source of truth for user permissions and artifact ownership. While the Enterprise version offers usefull additional functions, for operating a hypathia-style cluster, the open-source version is sufficient.
+
+* [Kubernetes](https://kubernetes.io in a multi-tenant configuration for orchestrating containers based applications.
+* Container Linux as operating system for nodes. The current phase of restructuring of the project makes it unclear whether the [version offered by CoreOs](https://coreos.com/os/docs/latest/), the division of RedHat Inc. or by [Flatcar](https://www.flatcar-linux.org/), the version forked by the original authors is more ideally suited. We will keep you posted.
+* [Ceph](https://ceph.com/) as storage solution. This is provided to an Hypathia K8s cluster via the [Rook](https://rook.io/) project.
+* LDAP for password and identity management. This can be provided via a number of solutions.
