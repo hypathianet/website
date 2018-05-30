@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes Stack for Academia on My blog</title>
+    <link>/</link>
+    <description>Recent content in Kubernetes Stack for Academia on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Everything is mine</copyright>
+    <lastBuildDate>Thu, 17 May 2018 06:30:49 +0200</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction</title>
+      <link>/docs/introduction.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/docs/introduction.html</guid>
+      <description>Mission hypathia.net aims to provide a blueprint for operating a service to provide cloud based computing resources in a self-service manner. It presents an opionated selection of components, configurations and practices tailored to environments that have a specific set of requirements, often found at academic institutions.
+Requirements These are the main requirements that shaped the specific characteristics of hypathia.net:
+ The organisation cannot use computing resources of a public cloud provider This may be due to procurement rules, legal obligations or the wish to run highly sensitiver workloads in-house, rather than on hardware that the organisation has virtually no control over.</description>
+    </item>
+    
+    <item>
+      <title>More Deployment Mojo</title>
+      <link>/blog/secure-deployment-to-k8s.html</link>
+      <pubDate>Thu, 17 May 2018 11:45:40 +0200</pubDate>
+      
+      <guid>/blog/secure-deployment-to-k8s.html</guid>
+      <description>Deploying into the ICC Picture the build pipeline of GitLab has finally succeeded and created a new container image. Naturally, now I want to have the pipeline deploy it into the cluster. Or to be more precise, to change the configuration of the cluster in such a manner, that it will pull the new image and then restart the ports according to the update rules of Deployments and Replica Sets.</description>
+    </item>
+    
+    <item>
+      <title>Image Management</title>
+      <link>/docs/image-management.html</link>
+      <pubDate>Fri, 18 May 2018 11:15:43 +0200</pubDate>
+      
+      <guid>/docs/image-management.html</guid>
+      <description> Image Proxy Cache Private Registry Registry Permissions </description>
+    </item>
+    
+    <item>
+      <title>Permissions</title>
+      <link>/docs/permissions.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/docs/permissions.html</guid>
+      <description>User Groups User organize themself by creating projects and groups in Gitlab
+Namespace Mapping Cluster Authentication LDAP Authentication kubelogin RBAC Service Accounts Capabilities The required capabilities for Conduit (a PSP with CAP_NET_ADM activated) are made availabe via a special service account conduit. Deployments that wish to use the Service Mesh must assign the service account in der deployment description.</description>
+    </item>
+    
+    <item>
+      <title>Jupyter Hub</title>
+      <link>/docs/jupyter-hub.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/docs/jupyter-hub.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Service Mesh (WIP)</title>
+      <link>/docs/service-mesh.html</link>
+      <pubDate>Thu, 24 May 2018 15:30:49 +0200</pubDate>
+      
+      <guid>/docs/service-mesh.html</guid>
+      <description> Introduction A Service Mesh allows
+Candidates are Linkerd, which is already build into some parts of Kubernetes, and Conduit, which is especially lightweight.
+For both a multi-tenancy analysis and concept are missing as of yet.
+Further Links Alternatives  Linkerd Conduit Istio  </description>
+    </item>
+    
+    <item>
+      <title>References</title>
+      <link>/docs/references.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/docs/references.html</guid>
+      <description>Components of th hypathia.net Kubernetes (Kubernetes.io) A orchestration plattwork to help manage container based application.
+Other Tools for Computational Science Joint Roadmap for Open Science Tools (JROST.org) A community working on a joint roadmap for open science tools.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs/prerequisites.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/prerequisites.html</guid>
+      <description>You will need
+ a network with internet access as well as a sufficient number of available IP adresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. a DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). entries for all your users in an Directory System that allows access via LDAP.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/docs/security.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/security.html</guid>
+      <description>Take safety over security if performance is serverly impacted. Take security whenever it is affordable.
+Mulit-Tenancy is hard.
+References Hard Multi-Tenancy in Kubernetes, Jessie Frazelle.</description>
+    </item>
+    
+    <item>
+      <title>Mouseion Inc.</title>
+      <link>/company.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/company.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Password Recovery</title>
+      <link>/password-recovery.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/password-recovery.html</guid>
+      <description>Your email    Send Back to Log In
+ </description>
+    </item>
+    
+    <item>
+      <title>Sign In</title>
+      <link>/account.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/account.html</guid>
+      <description>Email   Password   Log in
+Forgot password?
+If you have any questions about authorization or you&#39;re our customer but haven&#39;t receive your login credentials, just send us a short email at support@company.com and we&#39;ll fix it right away.
+ </description>
+    </item>
+    
+  </channel>
+</rss>

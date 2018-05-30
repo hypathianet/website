@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Mein blog</title>
+    <link>/de/blog.html</link>
+    <description>Recent content in Blogs on Mein blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Everything is mine</copyright>
+    <lastBuildDate>Thu, 17 May 2018 11:45:40 +0200</lastBuildDate>
+    
+	<atom:link href="/de/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mehr Deployment Mojo</title>
+      <link>/de/blog/secure-deployment-to-k8s.html</link>
+      <pubDate>Thu, 17 May 2018 11:45:40 +0200</pubDate>
+      
+      <guid>/de/blog/secure-deployment-to-k8s.html</guid>
+      <description>Deploying in die ICC Angenommen die Build-Pipeline von Gitlab war endlich erfolgreich und hat ein neues Container Image erstellt. Nun möchte ich es natürlich auch von der Pipeline im Cluster deployen lassen. Oder um genauer zu sein, die Konfiguration des clusters derart zu ändern, das er das neue Image lädt und dann gemäß der Update Regeln von Deployments und Replica Sets die Pods neustartet.
+Dazu muss ich in meiner .</description>
+    </item>
+    
+  </channel>
+</rss>
