@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>/docs/networking.html</loc>
+    <lastmod>2018-05-31T06:12:26+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/secure-deployment-to-k8s.html</loc>
     <lastmod>2018-05-17T11:45:40+02:00</lastmod>
     <xhtml:link

@@ -34,6 +34,15 @@ Assumed Requirements These are the main requirements that shaped the specific ch
     </item>
     
     <item>
+      <title>Introduction</title>
+      <link>/docs/networking.html</link>
+      <pubDate>Thu, 31 May 2018 06:12:26 +0200</pubDate>
+      
+      <guid>/docs/networking.html</guid>
+      <description> Node Network Pod Network Automatic Certificate Generation Frontend / Load Balancer Make Service available to the World  add DNS resolution for name of the service. It should resolve to the IP Address of the frontend node. add line to /etc/haproxy/sni-domains.lst on the frontend node.  </description>
+    </item>
+    
+    <item>
       <title>More Deployment Mojo</title>
       <link>/blog/secure-deployment-to-k8s.html</link>
       <pubDate>Thu, 17 May 2018 11:45:40 +0200</pubDate>
