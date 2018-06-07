@@ -3,22 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/docs/introduction.html</loc>
+    <loc>/en/docs/introduction.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/prerequisites.html</loc>
+    <loc>/en/docs/prerequisites.html</loc>
     <lastmod>2018-05-30T16:29:59+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/networking.html</loc>
+    <loc>/en/docs/networking.html</loc>
     <lastmod>2018-05-31T06:12:26+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/secure-deployment-to-k8s.html</loc>
+    <loc>/en/blog/secure-deployment-to-k8s.html</loc>
     <lastmod>2018-05-17T11:45:40+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
@@ -28,43 +28,51 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/blog/secure-deployment-to-k8s.html"
+                href="/en/blog/secure-deployment-to-k8s.html"
                 />
   </url>
   
   <url>
-    <loc>/docs/image-management.html</loc>
+    <loc>/en/docs/image-management.html</loc>
     <lastmod>2018-05-18T11:15:43+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/permissions.html</loc>
+    <loc>/en/docs/permissions.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/jupyter-hub.html</loc>
+    <loc>/en/docs/jupyter-hub.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/service-mesh.html</loc>
+    <loc>/en/docs/service-mesh.html</loc>
     <lastmod>2018-05-24T15:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/references.html</loc>
+    <loc>/en/docs/references.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/security.html</loc>
+    <loc>/en/docs/help_needed.html</loc>
+    <lastmod>2018-05-18T11:15:43+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog.html</loc>
+    <loc>/en/docs/security.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/knowledge_base/multiple-identical-ingress.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/blog.html</loc>
     <lastmod>2018-05-17T11:45:40+02:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
@@ -73,12 +81,12 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/blog.html"
+                href="/en/blog.html"
                 />
   </url>
   
   <url>
-    <loc>/categories.html</loc>
+    <loc>/en/categories.html</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -87,18 +95,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="fr"
-                href="/fr/categories.html"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
-                href="/categories.html"
+                href="/en/categories.html"
                 />
   </url>
   
   <url>
-    <loc>/categories/deployment.html</loc>
+    <loc>/en/categories/deployment.html</loc>
     <lastmod>2018-05-17T11:45:40+02:00</lastmod>
     <priority>0</priority>
     <xhtml:link
@@ -109,22 +112,26 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/categories/deployment.html"
+                href="/en/categories/deployment.html"
                 />
   </url>
   
   <url>
-    <loc>/docs.html</loc>
+    <loc>/en/docs.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/faq.html</loc>
+    <loc>/en/faq.html</loc>
   </url>
   
   <url>
-    <loc>/tags/kubernetes-authz.html</loc>
+    <loc>/en/knowledge_base.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/tags/kubernetes-authz.html</loc>
     <lastmod>2018-05-17T11:45:40+02:00</lastmod>
     <priority>0</priority>
     <xhtml:link
@@ -135,12 +142,12 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/tags/kubernetes-authz.html"
+                href="/en/tags/kubernetes-authz.html"
                 />
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/en/</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
@@ -149,30 +156,17 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="fr"
-                href="/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
-                href="/"
+                href="/en/"
                 />
   </url>
   
   <url>
-    <loc>/company.html</loc>
+    <loc>/en/company.html</loc>
   </url>
   
   <url>
-    <loc>/password-recovery.html</loc>
-  </url>
-  
-  <url>
-    <loc>/account.html</loc>
-  </url>
-  
-  <url>
-    <loc>/tags.html</loc>
+    <loc>/en/tags.html</loc>
     <lastmod>2018-05-17T11:45:40+02:00</lastmod>
     <priority>0</priority>
     <xhtml:link
@@ -182,13 +176,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="fr"
-                href="/fr/tags.html"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
-                href="/tags.html"
+                href="/en/tags.html"
                 />
   </url>
   

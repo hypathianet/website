@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Knowledge Base on hypathia.net</title>
+    <link>/en/knowledge_base.html</link>
+    <description>Recent content in Knowledge Base on hypathia.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Everything is mine</copyright>
+    
+	<atom:link href="/en/knowledge_base/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/en/knowledge_base/multiple-identical-ingress.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/knowledge_base/multiple-identical-ingress.html</guid>
+      <description>Symptoms All paths of an exported resources will show 503 Service Temporarily Unavailable for all paths.
+Cause multiple ingress objects expose the same hostname
+How to find it if site.example.com is the exposed name:
+~$ kubectl get ingress --all-namespaces -o wide | grep site.example.com namespace1 name-ingress site.example.com 80, 443 4d mynamespace my-ingress site.example.com 80, 443 5d production prod-ingress site.example.com 80, 443 18h</description>
+    </item>
+    
+  </channel>
+</rss>

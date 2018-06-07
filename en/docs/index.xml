@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on hypathia.net</title>
+    <link>/en/docs.html</link>
+    <description>Recent content in Docs on hypathia.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Everything is mine</copyright>
+    <lastBuildDate>Thu, 17 May 2018 06:30:49 +0200</lastBuildDate>
+    
+	<atom:link href="/en/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction</title>
+      <link>/en/docs/introduction.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/en/docs/introduction.html</guid>
+      <description>Mission hypathia.net aims to provide a blueprint for operating a service to provide cloud based computing resources in a self-service manner. It presents an opinionated selection of components, configurations and practices tailored to environments that have a specific set of requirements, often found at academic institutions.
+Assumed Requirements These are the main requirements that shaped the specific characteristics of hypathia.net:
+ The organisation cannot use computing resources of a public cloud provider This may be due to procurement rules, legal obligations or the wish to run highly sensitive workloads in-house, rather than on hardware that the organization has virtually no control over.</description>
+    </item>
+    
+    <item>
+      <title>Prerequisites</title>
+      <link>/en/docs/prerequisites.html</link>
+      <pubDate>Wed, 30 May 2018 16:29:59 +0200</pubDate>
+      
+      <guid>/en/docs/prerequisites.html</guid>
+      <description>Infrastructure Environment You will need
+ a network with Internet access as well as a sufficient number of available IP addresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. a DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). entries for all your users in an Directory System that allows access via LDAP.</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>/en/docs/networking.html</link>
+      <pubDate>Thu, 31 May 2018 06:12:26 +0200</pubDate>
+      
+      <guid>/en/docs/networking.html</guid>
+      <description> Node Network Pod Network Automatic Certificate Generation Frontend / Load Balancer Make Service available to the World  add DNS resolution for name of the service. It should resolve to the IP Address of the frontend node. add line to /etc/haproxy/sni-domains.lst on the frontend node.  </description>
+    </item>
+    
+    <item>
+      <title>Image Management</title>
+      <link>/en/docs/image-management.html</link>
+      <pubDate>Fri, 18 May 2018 11:15:43 +0200</pubDate>
+      
+      <guid>/en/docs/image-management.html</guid>
+      <description> Image Proxy Cache Private Registry Registry Permissions </description>
+    </item>
+    
+    <item>
+      <title>Permissions</title>
+      <link>/en/docs/permissions.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/en/docs/permissions.html</guid>
+      <description>User Groups User organize themself by creating projects and groups in Gitlab
+Namespace Mapping Cluster Authentication LDAP Authentication kubelogin RBAC Service Accounts Capabilities The required capabilities for Conduit (a PSP with CAP_NET_ADM activated) are made availabe via a special service account conduit. Deployments that wish to use the Service Mesh must assign the service account in der deployment description.</description>
+    </item>
+    
+    <item>
+      <title>Jupyter Hub</title>
+      <link>/en/docs/jupyter-hub.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/en/docs/jupyter-hub.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Service Mesh (WIP)</title>
+      <link>/en/docs/service-mesh.html</link>
+      <pubDate>Thu, 24 May 2018 15:30:49 +0200</pubDate>
+      
+      <guid>/en/docs/service-mesh.html</guid>
+      <description> Introduction A Service Mesh allows
+Candidates are Linkerd, which is already build into some parts of Kubernetes, and Conduit, which is especially lightweight.
+For both a multi-tenancy analysis and concept are missing as of yet.
+Further Links Alternatives  Linkerd Conduit Istio  </description>
+    </item>
+    
+    <item>
+      <title>References</title>
+      <link>/en/docs/references.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/en/docs/references.html</guid>
+      <description>Components of th hypathia.net Kubernetes (Kubernetes.io) A orchestration plattwork to help manage container based application.
+Other Tools for Computational Science Joint Roadmap for Open Science Tools (JROST.org) A community working on a joint roadmap for open science tools.
+SlateCI A plattform for offering services within a university campus</description>
+    </item>
+    
+    <item>
+      <title>Help Needed</title>
+      <link>/en/docs/help_needed.html</link>
+      <pubDate>Fri, 18 May 2018 11:15:43 +0200</pubDate>
+      
+      <guid>/en/docs/help_needed.html</guid>
+      <description>OwnerListAdmissionController ffo foo</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/en/docs/security.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/docs/security.html</guid>
+      <description>Take safety over security if performance is serverly impacted. Take security whenever it is affordable.
+Mulit-Tenancy is hard.
+References Hard Multi-Tenancy in Kubernetes, Jessie Frazelle.</description>
+    </item>
+    
+  </channel>
+</rss>
