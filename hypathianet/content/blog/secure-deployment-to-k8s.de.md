@@ -17,7 +17,7 @@ bref = "Sicheres Deployment aus der Build Pipeline"
 
 Angenommen die Build-Pipeline von Gitlab war endlich erfolgreich und hat ein neues Container Image erstellt. Nun möchte ich es natürlich auch von der Pipeline im Cluster deployen lassen. Oder um genauer zu sein, die Konfiguration des clusters derart zu ändern, das er das neue Image lädt und dann gemäß der [Update Regeln](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment) von Deployments und Replica Sets die Pods neustartet.
 
-Dazu muss ich in meiner `.gitlab-ci.yml` nur ein paar Variablen setzen und ein entsprechender Job enthalten sein:
+Dazu muss ich in meiner `.gitlab-ci.yml` nur ein paar Variablen setzen und ein entsprechender Job muss enthalten sein:
 
 ```
 variables:

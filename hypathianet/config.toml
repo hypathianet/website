@@ -1,26 +1,26 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "hypathia.net"
-theme = "kube"
+theme = "learn"
 description = "hypathia.net a kubernetes based container management solution aimed at the specific needs of academic organisations."
 Paginate = 4
 
 DefaultContentLanguage = "en"
 copyright = "Everything is mine"
 
-[languages]
-  [languages.en]
-    title = "My blog"
-    weight = 1
-    [languages.en.params]
-      linkedin = "english-link"
-  [languages.de]
-    title = "Mein blog"
-    weight = 2
-    [languages.fr.params]
-      linkedin = "lien-francais"
-      [languages.fr.params.navigation]
-        help = "Aide"
+# Force to have /en/my-page and /fr/my-page routes, even for default language.
+defaultContentLanguageInSubdir= true
+
+[Languages]
+[Languages.en]
+title = "hypathia.net"
+weight = 1
+languageName = "English"
+
+[Languages.de]
+title = "hypathia.net"
+weight = 2
+languageName = "Deutsch"
+
 
 [Params]
   RSSLink = "/index.xml"
@@ -29,18 +29,33 @@ copyright = "Everything is mine"
   twitter = "cypherfox" # add your twitter profile
   email = "lutz.behnke@gmx.de"
 
+[params]
+  # Prefix URL to edit current page. Will display an "Edit this page" button on top right hand corner of every page. 
+  # Useful to give opportunity to people to create merge request for your doc.
+  # See the config.toml file from this documentation site to have an example.
+  editURL = "https://github.com/hypathianet/webite/hypathianet/content/"
+  # Author of the site, will be used in meta information
+  author = "hypathia.net Project"
+  # Description of the site, will be used in meta information
+  description = "A Kubernetes distribution for bare-metal multi-tenancy clusters."
+  # Shows a checkmark for visited pages on the menu
+  showVisitedLinks = false
+  # Disable search function. It will hide search bar
+  disableSearch = true
+  # Javascript and CSS cache are automatically busted when new version of site is generated. 
+  # Set this to true to disable this behavior (some proxies don't handle well this optimization)
+  disableAssetsBusting = false
+  # Set this to true to disable copy-to-clipboard button for inline code.
+  disableInlineCopyToClipBoard = false
+  # A title for shortcuts in menu is set by default. Set this to true to disable it. 
+  disableShortcutsTitle = false
+  # When using mulitlingual website, disable the switch language button.
+  disableLanguageSwitchingButton = false
+  # Order sections in menu by "weight" or "title". Default to "weight"
+  ordersectionsby = "weight"
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = ""
+  
  [params.navigation]
     help = "Help"
 
-[[menu.main]]
-    name = "Docs"
-    weight = -100
-    url = "/docs"
-[[menu.main]]
-    name = "Blog"
-    weight = -100
-    url = "/blog"
-[[menu.main]]
-    name = "Faq"
-    weight = -100
-    url = "/faq"

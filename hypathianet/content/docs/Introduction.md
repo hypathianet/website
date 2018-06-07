@@ -25,7 +25,7 @@ These are the main requirements that shaped the specific characteristics of hypa
  <dd>This may be due to procurement rules, legal obligations or the wish to run highly 
  sensitive workloads in-house, rather than on hardware that the organization has virtually no control over.</dd>
  <dt>The smallest workloads can be <em>very</em> small.</dt>
- <dd>While a cluster build from hypathia.net can run applications that span hundreds of nodes, it will also efficiently handle minimalistic experiments that consist of a single web-page, requested by a single user.</dd>
+ <dd>While a cluster build from hypathia.net can run applications that span hundreds of nodes, it will also efficiently handle minimalistic experiments that consist of a single web-page, requested only a handfull of times by a single user.</dd>
  <dt>Users cannot be assumed to be able to run their own cluster</dt>
  <dd>Actually running a Kubernetes cluster takes quite some expertise and time. Requiring every user to do this is not only inefficient with regard to the time of the user, but also makes efficient sharing of computing resources much more complex than need be. Especially when ombined with the previous requirement of very small workloads.</dd>
  <dt>Minimal support resources available </dt>
@@ -48,5 +48,12 @@ There are a number of further goals that the design of the cluster strives to su
 
 * [Kubernetes](https://kubernetes.io in a multi-tenant configuration for orchestrating containers based applications.
 * Container Linux as operating system for nodes. The current phase of restructuring of the project makes it unclear whether the [version offered by CoreOs](https://coreos.com/os/docs/latest/), the division of RedHat Inc. or by [Flatcar](https://www.flatcar-linux.org/), the version forked by the original authors is more ideally suited. We will keep you posted.
+
 * [Ceph](https://ceph.com/) as storage solution. This is provided to an Hypathia K8s cluster via the [Rook](https://rook.io/) project.
+
 * LDAP for password and identity management. This can be provided via a number of solutions.
+
+### Origins
+
+The documentation on this website was extended and restructured from the fantastic Kubernetes tutorial "Kubernetes the Hard Way"(https://github.com/kelseyhightower/kubernetes-the-hard-way) by Kelsey Hightower. Parts are reproduced by his kind permission.
+

@@ -20,3 +20,7 @@ A orchestration plattwork to help manage container based application.
 #### Joint Roadmap for Open Science Tools ([JROST.org](https://jrost.org))
 
 A community working on a joint roadmap for open science tools.
+
+#### [SlateCI](http://slateci.io/)
+
+A plattform for offering services within a university campus

@@ -15,10 +15,10 @@ bref = "Secure deployment from the build pipeline"
 
 ## Deploying into the ICC
 
-Picture the build pipeline of GitLab has finally succeeded and created a new container image. Naturally, now I want to have the pipeline deploy it into the cluster. Or to be more precise, to change the configuration of the cluster in such a manner, that it will pull the new image and then restart the ports according to the [update rules] (https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment) of Deployments and Replica Sets.
+Let's assume the build pipeline of GitLab has finally succeeded and created a new container image. Naturally, now I want to have the pipeline deploy it into the cluster. Or to be more precise, to change the configuration of the cluster in such a manner, that it will pull the new image and then restart the ports according to the [update rules] (https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment) of Deployments and Replica Sets.
 
 
-Dazu muss ich in meiner `.gitlab-ci.yml` nur ein paar Variablen setzen und ein entsprechender Job enthalten sein:
+For this I have to set only a few variables in my `.gitlab-ci.yml` and a corresponding job must be present:
 
 ```
 variables:
@@ -36,46 +36,45 @@ deploy_image:
 ```
 
 
-Mehr Informationen finden sich im `userdoc` Abschnitt [Deployment einer Applikation aus GitLab in die ICC](https://userdoc.informatik.haw-hamburg.de/doku.php?id=docu:informatikcomputecloud#deployment_einer_applikation_aus_gitlab_in_die_icc).
+More information can be found in the `userdoc` section [Deploying an application from GitLab to the ICC] (https://userdoc.informatik.haw-hamburg.de/doku.php?id=docu:informatikcomputecloud#deployment_einer_applikation_aus_gitlab_in_die_icc).
 
-### Alles unsicher?
+### Everything insecure?
 
-Darf nun jeder User in jeden Namespace im ICC Cluster Änderungen durchführen? Nein, nur jene User, die im Gitlab für die entsprechenden Gruppen oder Projekte entsprechende Rechte haben (*Owner*, *Master* um ändern, *Developer* um Informationen abzufragen).
+Can every user in every namespace in the ICC cluster make changes? No, only those users who have corresponding rights in the Gitlab for the corresponding groups or projects (* Owner *, * Master * to change, * Developer * to request information).
 
-Wenn ich versuche die gleichen Schritte wie im CI Script von meinem lokalen Rechner ausführe, wird dies fehlschlagen und ich werde den Hinweis das ich nicht berechtigt bin die Änderung des Deployments durchzuführen.
+If I try to do the same things as in the CI script from my local machine, it will fail and I will point out that I am not authorized to make the change to the deployment.
 
-Erst wenn ich mit mit Hilfe von `kubelogin` gegenüber dem Cluster authentifiziere wird die Änderung akzeptiert (für Namespaces in denen ich mindestens *Master* bin).
+Only when I authenticate against the cluster with the help of `kubelogin` will the change be accepted (for namespaces where I am at least * master *).
 
-## Hinter den Kulissen: mehr Admin-Mojo
+## Behind the scenes: more admin-mojo
 
-Damit der Gitlab-Runner für alle Namespaces Änderungen durchführen darf, ist eine spezielle Integration zwischen Gitlab und Kubernetes notwendig.
+For the Gitlab-Runner to be able to make changes for all namespaces, a special integration between Gitlab and Kubernetes is necessary.
 
-Zum Glück unterstützt Gitlab diese Integration. (Details in der [Gitlab-Dokumentation](https://docs.gitlab.com/ee/user/project/integrations/kubernetes.html)) und baut diese sogar kontinuierlich aus (siehe unten). Leider macht GitLab die Annahme das jeder Benutzer die Möglichkeit hat, nach Belieben eigene Cluster anzulegen, z.B. durch das Starten von virtuellen Maschinen bei Cloud Anbietern wie AWS oder GKE. In der HAW ist dies nicht möglich. Daher verwendet die ICC ein anderes Modell bei dem allen Benutzer in eigenen Namespaces in einem gemeinsam verwendeten Cluster arbeiten.
+Luckily, Gitlab supports this integration. (Details in the [Gitlab Documentation] (https://docs.gitlab.com/ee/user/project/integrations/kubernetes.html)) and even expanding it continuously (see below). Unfortunately, GitLab makes the assumption that every user has the opportunity to create their own clusters at will, e.g. by launching virtual machines with cloud providers like AWS or GKE. In the HAW this is not possible. Therefore, the ICC uses a different model where all users work in their own namespaces in a shared cluster.
 
-Dazu gibt es in der ICC einen Dienst namens `gl-k8s-integrator`. Dieser stellt sicher, das es für jeden Namenspace im Kubernetes Cluster folgende Dinge gibt:
+There is a service in the ICC called 'gl-k8s-integrator`. This ensures that there is the following for each namespace in the Kubernetes cluster:
 
-* Einen `ServiceAccount` namens `gitlab-serviceaccount` der mit der Rolle `gitlab-group-master` assiziert ist. Diese Roller gestattet es alle Objekte in einem Namespace zu lesen, löschen und zu ändern, sowie neue Objekte in dem Namespace anzulegen.
-* Ein `Secret` das einen Token enthält.
+* A `ServiceAccount` named` gitlab-serviceaccount` which is asserted with the role `gitlab-group-master`. This scooter allows you to read, delete, and modify all objects in a namespace, as well as create new objects in the namespace.
+* A `secret` containing a token.
 
-Außerdem trägt es in jedem Projekt im Gitlab folgende Dinge in die Kubernetes Integration ein:
+In addition, in every project at Gitlab, it incorporates the following into Kubernetes integration:
 
-* Die URL unter der GitLab die Kubernetes API erreichen kann.
-* Das CA Zertifikat, damit Gitlab sicher über TLS mit der Kubernetes API kommunizieren kann.
-* Den Namespace der dem Projekt entspricht.
-* Den Token aus dem `Secret`, das oben erwähnt wurde.
+* The URL under which GitLab can reach the Kubernetes API.
+* The CA certificate for Gitlab to securely communicate with the Kubernetes API through TLS.
+* The namespace corresponding to the project.
+* The token from the `Secret` mentioned above.
 
-Wenn nun in einem Job des CI/CD Scripts folgendes Fragment steht:
-
+If the following fragment is found in a job of the CI / CD script:
 ```
   environment:
     name: ICC-K8s
 ```
 
-dann setzt GitLab automatisch die richtigen Einstellungen, so das mit `kubectl` nicht nur im richtigen Namespace landed, sondern auch die notwendigen Rechte hat um dort Änderungen auszuführen.
+then GitLab sets automatically the correct settings, so that `kubectl` landed not only in the correct namespace, but also has the necessary rights to make changes there.
 
 ## Nachtrag
 
-Wie in der Dokumentation von Gitlab zu sehen ist, wurde die Kubernetes Integration in der momentanen Form als veraltet markiert ("deprecated"). Wir werden die momentane Funktionionalität zeitnah mit der aktuellen Umsetzung der Kubernetes-Anbindung nachstellen. Das ICC Modell einen existierenden, gemeinsam verwendeten Cluster zu verwenden ist der Dokumentation von Gitlab sogar schon [vorgesehen](https://docs.gitlab.com/ee/user/project/clusters/index.html#adding-an-existing-kubernetes-cluster).
+As can be seen in Gitlab's documentation, the Kubernetes integration has been deprecated in its current form. We will adjust the current functionality in a timely manner with the current implementation of the Kubernetes connection. The ICC model to use an existing, shared cluster is already provided for by Gitlab's documentation (https://docs.gitlab.com/ee/user/project/clusters/index.html#adding-an-existing- kubernetes-cluster).
 
 ## Colophon
 
