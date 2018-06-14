@@ -12,17 +12,17 @@
     <title>Help Needed :: hypathia.net</title>
     
     
-    <link href="/css/nucleus.css?1528369228" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1528369228" rel="stylesheet">
-    <link href="/css/hybrid.css?1528369228" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1528369228" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1528369228" rel="stylesheet">
-    <link href="/css/auto-complete.css?1528369228" rel="stylesheet">
-    <link href="/css/theme.css?1528369228" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1528369228" rel="stylesheet">
+    <link href="/css/nucleus.css?1528975460" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1528975460" rel="stylesheet">
+    <link href="/css/hybrid.css?1528975460" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1528975460" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1528975460" rel="stylesheet">
+    <link href="/css/auto-complete.css?1528975460" rel="stylesheet">
+    <link href="/css/theme.css?1528975460" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1528975460" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1528369228"></script>
+    <script src="/js/jquery-2.x.min.js?1528975460"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -67,14 +67,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1528369228"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1528369228"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1528975460"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1528975460"></script>
 <script type="text/javascript">
     
         var baseurl = "\/en";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1528369228"></script>
+<script type="text/javascript" src="/js/search.js?1528975460"></script>
 
     
   </div>
@@ -538,6 +538,12 @@
 <li>
 <ul>
 <li><a href="#ownerlistadmissioncontroller">OwnerListAdmissionController</a></li>
+<li><a href="#cleanupoperator">CleanupOperator</a></li>
+<li><a href="#tenantoperator">TenantOperator</a></li>
+<li><a href="#tenantquotaadmissioncontroller">TenantQuotaAdmissionController</a></li>
+<li><a href="#tamiasui">TamiasUI</a></li>
+<li><a href="#dnsingresscontroller">DNSIngressController</a></li>
+<li><a href="#hapingresscontroller">HAPIngressController</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -561,9 +567,38 @@
 
 
 
+<p>Currently the are a number of holes in the automation of the hypathia system. It should be possible to close them, with the construction of a number of operators and controllers for the kubernetes system. An overview can be seen in this graphic:
+
+<figure >
+    
+        <img src="/img/docs/help_needed/Kubernetes_Tenant_Ecosystem.svg" width="50%" />
+    
+    
+    <figcaption>
+        <h4>Kubernetes Tenant Ecosystem</h4>
+        
+    </figcaption>
+    
+</figure>
+</p>
+
 <h3 id="ownerlistadmissioncontroller">OwnerListAdmissionController</h3>
 
-<p>ffo foo</p>
+<p>In order to use tools like <a href="https://azure.microsoft.com/en-us/blog/streamlining-kubernetes-development-with-draft/">Draft</a>, users have to be able to list namespaces. But as granting this right would result in exposing the information about other users namespaces, this is not permitted in the current settings.</p>
+
+<p>The OwnerListAdmissionController must retrieve the information to which namespaces the calling account has access to from either the GitLab directly or better yet from a ownership service running within the cluster. It then must filter all requests for namespaces to only return those that the user has permission to read from.</p>
+
+<h3 id="cleanupoperator">CleanupOperator</h3>
+
+<h3 id="tenantoperator">TenantOperator</h3>
+
+<h3 id="tenantquotaadmissioncontroller">TenantQuotaAdmissionController</h3>
+
+<h3 id="tamiasui">TamiasUI</h3>
+
+<h3 id="dnsingresscontroller">DNSIngressController</h3>
+
+<h3 id="hapingresscontroller">HAPIngressController</h3>
 
 
 <footer class=" footline" >
@@ -879,20 +914,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1528369228"></script>
-    <script src="/js/perfect-scrollbar.min.js?1528369228"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1528369228"></script>
-    <script src="/js/jquery.sticky.js?1528369228"></script>
-    <script src="/js/featherlight.min.js?1528369228"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1528369228"></script>
-    <script src="/js/highlight.pack.js?1528369228"></script>
+    <script src="/js/clipboard.min.js?1528975460"></script>
+    <script src="/js/perfect-scrollbar.min.js?1528975460"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1528975460"></script>
+    <script src="/js/jquery.sticky.js?1528975460"></script>
+    <script src="/js/featherlight.min.js?1528975460"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1528975460"></script>
+    <script src="/js/highlight.pack.js?1528975460"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1528369228"></script>
-    <script src="/js/learn.js?1528369228"></script>
-    <script src="/js/hugo-learn.js?1528369228"></script>
+    <script src="/js/modernizr.custom.71422.js?1528975460"></script>
+    <script src="/js/learn.js?1528975460"></script>
+    <script src="/js/hugo-learn.js?1528975460"></script>
 
-    <link href="/mermaid/mermaid.css?1528369228" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1528369228"></script>
+    <link href="/mermaid/mermaid.css?1528975460" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1528975460"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

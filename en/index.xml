@@ -108,7 +108,7 @@ SlateCI A plattform for offering services within a university campus</descriptio
       <pubDate>Fri, 18 May 2018 11:15:43 +0200</pubDate>
       
       <guid>/en/docs/help_needed.html</guid>
-      <description>OwnerListAdmissionController ffo foo</description>
+      <description>Currently the are a number of holes in the automation of the hypathia system. It should be possible to close them, with the construction of a number of operators and controllers for the kubernetes system. An overview can be seen in this graphic:  Kubernetes Tenant Ecosystem   OwnerListAdmissionController In order to use tools like Draft, users have to be able to list namespaces. But as granting this right would result in exposing the information about other users namespaces, this is not permitted in the current settings.</description>
     </item>
     
     <item>
