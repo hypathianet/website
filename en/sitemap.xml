@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>/en/day_0.html</loc>
+    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/en/blog/secure-deployment-to-k8s.html</loc>
     <lastmod>2018-05-17T11:45:40+02:00</lastmod>
     <xhtml:link
@@ -30,6 +35,16 @@
                 hreflang="en"
                 href="/en/blog/secure-deployment-to-k8s.html"
                 />
+  </url>
+  
+  <url>
+    <loc>/en/day_1.html</loc>
+    <lastmod>2018-05-31T06:12:26+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/en/day_2.html</loc>
+    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
@@ -53,6 +68,14 @@
   </url>
   
   <url>
+    <loc>/en/faq.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/knowledge_base.html</loc>
+  </url>
+  
+  <url>
     <loc>/en/day_2/service-mesh.html</loc>
     <lastmod>2018-05-24T15:30:49+02:00</lastmod>
   </url>
@@ -60,19 +83,6 @@
   <url>
     <loc>/en/day_0/references.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/en/day_0/help_needed.html</loc>
-    <lastmod>2018-05-18T11:15:43+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/en/day_0/security_intro.html</loc>
-  </url>
-  
-  <url>
-    <loc>/en/knowledge_base/multiple-identical-ingress.html</loc>
   </url>
   
   <url>
@@ -91,6 +101,19 @@
   </url>
   
   <url>
+    <loc>/en/day_0/help_needed.html</loc>
+    <lastmod>2018-05-18T11:15:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/en/day_0/security_intro.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/knowledge_base/multiple-identical-ingress.html</loc>
+  </url>
+  
+  <url>
     <loc>/en/categories.html</loc>
     <priority>0</priority>
     <xhtml:link
@@ -103,21 +126,6 @@
                 hreflang="en"
                 href="/en/categories.html"
                 />
-  </url>
-  
-  <url>
-    <loc>/en/day_0.html</loc>
-    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/en/day_1.html</loc>
-    <lastmod>2018-05-31T06:12:26+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/en/day_2.html</loc>
-    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
@@ -140,14 +148,6 @@
     <loc>/en/docs.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/en/faq.html</loc>
-  </url>
-  
-  <url>
-    <loc>/en/knowledge_base.html</loc>
   </url>
   
   <url>
