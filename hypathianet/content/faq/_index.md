@@ -1,7 +1,8 @@
 +++
-draft= false
 title = "FAQ"
 description = "Asked and answered"
+draft= false
+weight = 800
 +++
 
 ## How can I ask further questions?

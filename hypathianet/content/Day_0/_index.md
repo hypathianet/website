@@ -2,6 +2,7 @@
 draft= false
 title = "Day 0: Introduction"
 description = "Introduction and Overview to the parts of the documentation"
+weight = 100
 +++
 
 # Introduction
