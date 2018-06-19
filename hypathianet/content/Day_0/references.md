@@ -9,7 +9,7 @@ toc = true
 +++
 
 
-### Components of th hypathia.net
+### Components of the hypathia.net
 
 #### Kubernetes ([Kubernetes.io](https://kubeternetes.io))
 

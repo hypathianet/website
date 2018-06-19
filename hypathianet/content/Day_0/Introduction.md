@@ -46,7 +46,7 @@ There are a number of further goals that the design of the cluster strives to su
 
 * [Gitlab](https://about.gitlab.com) as main user interface for group management and version control, collaboration and communication. It also acts as the source of truth for user permissions and artifact ownership. While the Enterprise version offers usefull additional functions, for operating a hypathia-style cluster, the open-source version is sufficient.
 
-* [Kubernetes](https://kubernetes.io in a multi-tenant configuration for orchestrating containers based applications.
+* [Kubernetes](https://kubernetes.io) in a multi-tenant configuration for orchestrating containers based applications.
 * Container Linux as operating system for nodes. The current phase of restructuring of the project makes it unclear whether the [version offered by CoreOs](https://coreos.com/os/docs/latest/), the division of RedHat Inc. or by [Flatcar](https://www.flatcar-linux.org/), the version forked by the original authors is more ideally suited. We will keep you posted.
 
 * [Ceph](https://ceph.com/) as storage solution. This is provided to an Hypathia K8s cluster via the [Rook](https://rook.io/) project.
@@ -56,4 +56,6 @@ There are a number of further goals that the design of the cluster strives to su
 ### Origins
 
 The documentation on this website was extended and restructured from the fantastic Kubernetes tutorial "Kubernetes the Hard Way"(https://github.com/kelseyhightower/kubernetes-the-hard-way) by Kelsey Hightower. Parts are reproduced by his kind permission.
+
+The prototype cluster, that was created by working through his tutorial was then turned into a production system over time. A snapshot can be seen in  [Kubernetes the HAW way](https://github.com/christianhuening/kubernetes-the-haw-hamburg-way). From here the documentation was generalized and restructured. The [Informatik Compute Cloud](https://icc.informatik.haw-hamburg.de) remains a reference implementation of the Hypathia.net cluster.
 

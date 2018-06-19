@@ -1,6 +1,6 @@
 
 
-Take safety over security if performance is serverly impacted. Take security whenever it is affordable.
+Take safety over security if performance is severly impacted. Take security whenever it is affordable.
 
 Mulit-Tenancy is hard.
 
