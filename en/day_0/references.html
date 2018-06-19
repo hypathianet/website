@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="generator" content="Hugo 0.36.1" />
-    <meta name="description" content="">
+    <meta name="description" content="References to external tools and projects">
 <meta name="author" content="Lutz Behnke">
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title> :: hypathia.net</title>
+    <title>References :: hypathia.net</title>
     
     
     <link href="/css/nucleus.css?1529388328" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/en/knowledge_base/multiple-identical-ingress.html">
+  <body class="" data-url="/en/day_0/references.html">
     <nav id="sidebar" class="">
 
 
@@ -231,7 +231,7 @@
   
     
     <li data-nav-id="/en/day_0.html" title="Day 0: Introduction" class="dd-item 
-        
+        parent
         
         
         ">
@@ -293,7 +293,7 @@
  
   
     
-      <li data-nav-id="/en/day_0/references.html" title="References" class="dd-item ">
+      <li data-nav-id="/en/day_0/references.html" title="References" class="dd-item active">
         <a href="/en/day_0/references.html">
         References
         
@@ -501,7 +501,7 @@
   
     
     <li data-nav-id="/en/knowledge_base.html" title="Knowledge Base" class="dd-item 
-        parent
+        
         
         
         ">
@@ -525,7 +525,7 @@
  
   
     
-      <li data-nav-id="/en/knowledge_base/multiple-identical-ingress.html" title="" class="dd-item active">
+      <li data-nav-id="/en/knowledge_base/multiple-identical-ingress.html" title="" class="dd-item ">
         <a href="/en/knowledge_base/multiple-identical-ingress.html">
         
         
@@ -591,7 +591,7 @@
                   
                     
                     
-                      <option id="en" value="/en/knowledge_base/multiple-identical-ingress.html" selected>English</option>
+                      <option id="en" value="/en/day_0/references.html" selected>English</option>
                     
                   
               
@@ -656,7 +656,7 @@
             
           
           
-            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/knowledge_base.html'>Knowledge Base</a> > 
+            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_0.html'>Day 0: Introduction</a> > References
           
          
           
@@ -670,9 +670,21 @@
     <div class="wrapper">
 <nav id="TableOfContents">
 <ul>
-<li><a href="#symptoms">Symptoms</a></li>
-<li><a href="#cause">Cause</a></li>
-<li><a href="#how-to-find-it">How to find it</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#components-of-the-hypathia-net">Components of the hypathia.net</a>
+<ul>
+<li><a href="#kubernetes-kubernetes-io-https-kubeternetes-io">Kubernetes (<a href="https://kubeternetes.io">Kubernetes.io</a>)</a></li>
+</ul></li>
+<li><a href="#other-tools-for-computational-science">Other Tools for Computational Science</a>
+<ul>
+<li><a href="#joint-roadmap-for-open-science-tools-jrost-org-https-jrost-org">Joint Roadmap for Open Science Tools (<a href="https://jrost.org">JROST.org</a>)</a></li>
+<li><a href="#slateci-http-slateci-io"><a href="http://slateci.io/">SlateCI</a></a></li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
     </div>
@@ -686,7 +698,7 @@
         
         <div id="body-inner">
           
-            <h1></h1>
+            <h1>References</h1>
           
 
         
@@ -694,22 +706,21 @@
 
 
 
-<h1 id="symptoms">Symptoms</h1>
+<h3 id="components-of-the-hypathia-net">Components of the hypathia.net</h3>
 
-<p>All paths of an exported resources will show <code>503 Service Temporarily Unavailable</code> for all paths.</p>
+<h4 id="kubernetes-kubernetes-io-https-kubeternetes-io">Kubernetes (<a href="https://kubeternetes.io">Kubernetes.io</a>)</h4>
 
-<h1 id="cause">Cause</h1>
+<p>A orchestration plattwork to help manage container based application.</p>
 
-<p>multiple ingress objects expose the same hostname</p>
+<h3 id="other-tools-for-computational-science">Other Tools for Computational Science</h3>
 
-<h1 id="how-to-find-it">How to find it</h1>
+<h4 id="joint-roadmap-for-open-science-tools-jrost-org-https-jrost-org">Joint Roadmap for Open Science Tools (<a href="https://jrost.org">JROST.org</a>)</h4>
 
-<p>if <code>site.example.com</code> is the exposed name:</p>
+<p>A community working on a joint roadmap for open science tools.</p>
 
-<p><code>~$  kubectl get ingress --all-namespaces -o wide | grep site.example.com
-namespace1                name-ingress         site.example.com              80, 443   4d
-mynamespace               my-ingress           site.example.com              80, 443   5d
-production                prod-ingress         site.example.com              80, 443   18h</code></p>
+<h4 id="slateci-http-slateci-io"><a href="http://slateci.io/">SlateCI</a></h4>
+
+<p>A plattform for offering services within a university campus</p>
 
 
 <footer class=" footline" >
@@ -892,21 +903,6 @@ production                prod-ingress         site.example.com              80,
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -924,37 +920,8 @@ production                prod-ingress         site.example.com              80,
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1015,6 +982,54 @@ production                prod-ingress         site.example.com              80,
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1052,7 +1067,6 @@ production                prod-ingress         site.example.com              80,
             
                 
                     
-                    
                 
                 
 
@@ -1072,9 +1086,6 @@ production                prod-ingress         site.example.com              80,
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -1093,10 +1104,10 @@ production                prod-ingress         site.example.com              80,
 
 
         
-            <a class="nav nav-prev" href="/en/knowledge_base.html" title="Knowledge Base"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/en/day_0/prerequisites.html" title="Prerequisites"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/en/userguide.html" title="User Guide" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/en/day_0/help_needed.html" title="Help Needed" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

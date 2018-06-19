@@ -3,17 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/en/docs/introduction.html</loc>
+    <loc>/en/day_0/introduction.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/docs/prerequisites.html</loc>
+    <loc>/en/day_0/prerequisites.html</loc>
     <lastmod>2018-05-30T16:29:59+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/docs/networking.html</loc>
+    <loc>/en/day_1/networking.html</loc>
     <lastmod>2018-05-31T06:12:26+02:00</lastmod>
   </url>
   
@@ -33,7 +33,12 @@
   </url>
   
   <url>
-    <loc>/en/docs/image-management.html</loc>
+    <loc>/en/day_1/ipam.html</loc>
+    <lastmod>2018-06-19T06:45:19+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/en/day_1/image-management.html</loc>
     <lastmod>2018-05-18T11:15:43+02:00</lastmod>
   </url>
   
@@ -43,27 +48,27 @@
   </url>
   
   <url>
-    <loc>/en/docs/jupyter-hub.html</loc>
+    <loc>/en/day_2/jupyter-hub.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/docs/service-mesh.html</loc>
+    <loc>/en/day_2/service-mesh.html</loc>
     <lastmod>2018-05-24T15:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/docs/references.html</loc>
+    <loc>/en/day_0/references.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/docs/help_needed.html</loc>
+    <loc>/en/day_0/help_needed.html</loc>
     <lastmod>2018-05-18T11:15:43+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/docs/security.html</loc>
+    <loc>/en/day_0/security_intro.html</loc>
   </url>
   
   <url>
@@ -98,6 +103,21 @@
                 hreflang="en"
                 href="/en/categories.html"
                 />
+  </url>
+  
+  <url>
+    <loc>/en/day_0.html</loc>
+    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/en/day_1.html</loc>
+    <lastmod>2018-05-31T06:12:26+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/en/day_2.html</loc>
+    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
   <url>
@@ -179,6 +199,10 @@
                 hreflang="en"
                 href="/en/tags.html"
                 />
+  </url>
+  
+  <url>
+    <loc>/en/userguide.html</loc>
   </url>
   
 </urlset>

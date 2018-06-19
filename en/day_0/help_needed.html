@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="generator" content="Hugo 0.36.1" />
-    <meta name="description" content="">
+    <meta name="description" content="There are a number of areas of the cluster that need attention">
 <meta name="author" content="Lutz Behnke">
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title> :: hypathia.net</title>
+    <title>Help Needed :: hypathia.net</title>
     
     
     <link href="/css/nucleus.css?1529388328" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/en/knowledge_base/multiple-identical-ingress.html">
+  <body class="" data-url="/en/day_0/help_needed.html">
     <nav id="sidebar" class="">
 
 
@@ -231,7 +231,7 @@
   
     
     <li data-nav-id="/en/day_0.html" title="Day 0: Introduction" class="dd-item 
-        
+        parent
         
         
         ">
@@ -312,7 +312,7 @@
  
   
     
-      <li data-nav-id="/en/day_0/help_needed.html" title="Help Needed" class="dd-item ">
+      <li data-nav-id="/en/day_0/help_needed.html" title="Help Needed" class="dd-item active">
         <a href="/en/day_0/help_needed.html">
         Help Needed
         
@@ -501,7 +501,7 @@
   
     
     <li data-nav-id="/en/knowledge_base.html" title="Knowledge Base" class="dd-item 
-        parent
+        
         
         
         ">
@@ -525,7 +525,7 @@
  
   
     
-      <li data-nav-id="/en/knowledge_base/multiple-identical-ingress.html" title="" class="dd-item active">
+      <li data-nav-id="/en/knowledge_base/multiple-identical-ingress.html" title="" class="dd-item ">
         <a href="/en/knowledge_base/multiple-identical-ingress.html">
         
         
@@ -591,7 +591,7 @@
                   
                     
                     
-                      <option id="en" value="/en/knowledge_base/multiple-identical-ingress.html" selected>English</option>
+                      <option id="en" value="/en/day_0/help_needed.html" selected>English</option>
                     
                   
               
@@ -656,7 +656,7 @@
             
           
           
-            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/knowledge_base.html'>Knowledge Base</a> > 
+            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_0.html'>Day 0: Introduction</a> > Help Needed
           
          
           
@@ -670,9 +670,19 @@
     <div class="wrapper">
 <nav id="TableOfContents">
 <ul>
-<li><a href="#symptoms">Symptoms</a></li>
-<li><a href="#cause">Cause</a></li>
-<li><a href="#how-to-find-it">How to find it</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#ownerlistadmissioncontroller">OwnerListAdmissionController</a></li>
+<li><a href="#cleanupoperator">CleanupOperator</a></li>
+<li><a href="#tenantoperator">TenantOperator</a></li>
+<li><a href="#tenantquotaadmissioncontroller">TenantQuotaAdmissionController</a></li>
+<li><a href="#tamiasui">TamiasUI</a></li>
+<li><a href="#dnsingresscontroller">DNSIngressController</a></li>
+<li><a href="#hapingresscontroller">HAPIngressController</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
     </div>
@@ -686,7 +696,7 @@
         
         <div id="body-inner">
           
-            <h1></h1>
+            <h1>Help Needed</h1>
           
 
         
@@ -694,22 +704,38 @@
 
 
 
-<h1 id="symptoms">Symptoms</h1>
+<p>Currently the are a number of holes in the automation of the hypathia system. It should be possible to close them, with the construction of a number of operators and controllers for the kubernetes system. An overview can be seen in this graphic:
 
-<p>All paths of an exported resources will show <code>503 Service Temporarily Unavailable</code> for all paths.</p>
+<figure >
+    
+        <img src="/img/docs/help_needed/Kubernetes_Tenant_Ecosystem.svg" width="50%" />
+    
+    
+    <figcaption>
+        <h4>Kubernetes Tenant Ecosystem</h4>
+        
+    </figcaption>
+    
+</figure>
+</p>
 
-<h1 id="cause">Cause</h1>
+<h3 id="ownerlistadmissioncontroller">OwnerListAdmissionController</h3>
 
-<p>multiple ingress objects expose the same hostname</p>
+<p>In order to use tools like <a href="https://azure.microsoft.com/en-us/blog/streamlining-kubernetes-development-with-draft/">Draft</a>, users have to be able to list namespaces. But as granting this right would result in exposing the information about other users namespaces, this is not permitted in the current settings.</p>
 
-<h1 id="how-to-find-it">How to find it</h1>
+<p>The OwnerListAdmissionController must retrieve the information to which namespaces the calling account has access to from either the GitLab directly or better yet from a ownership service running within the cluster. It then must filter all requests for namespaces to only return those that the user has permission to read from.</p>
 
-<p>if <code>site.example.com</code> is the exposed name:</p>
+<h3 id="cleanupoperator">CleanupOperator</h3>
 
-<p><code>~$  kubectl get ingress --all-namespaces -o wide | grep site.example.com
-namespace1                name-ingress         site.example.com              80, 443   4d
-mynamespace               my-ingress           site.example.com              80, 443   5d
-production                prod-ingress         site.example.com              80, 443   18h</code></p>
+<h3 id="tenantoperator">TenantOperator</h3>
+
+<h3 id="tenantquotaadmissioncontroller">TenantQuotaAdmissionController</h3>
+
+<h3 id="tamiasui">TamiasUI</h3>
+
+<h3 id="dnsingresscontroller">DNSIngressController</h3>
+
+<h3 id="hapingresscontroller">HAPIngressController</h3>
 
 
 <footer class=" footline" >
@@ -908,6 +934,58 @@ production                prod-ingress         site.example.com              80,
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
                 
                 
 
@@ -967,54 +1045,6 @@ production                prod-ingress         site.example.com              80,
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1052,7 +1082,6 @@ production                prod-ingress         site.example.com              80,
             
                 
                     
-                    
                 
                 
 
@@ -1072,9 +1101,6 @@ production                prod-ingress         site.example.com              80,
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -1093,10 +1119,10 @@ production                prod-ingress         site.example.com              80,
 
 
         
-            <a class="nav nav-prev" href="/en/knowledge_base.html" title="Knowledge Base"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/en/day_0/references.html" title="References"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/en/userguide.html" title="User Guide" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/en/day_0/security_intro.html" title="" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

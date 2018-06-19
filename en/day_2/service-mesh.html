@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="generator" content="Hugo 0.36.1" />
-    <meta name="description" content="">
+    <meta name="description" content="Observing and managing data flow between pods">
 <meta name="author" content="Lutz Behnke">
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title> :: hypathia.net</title>
+    <title>Service Mesh (WIP) :: hypathia.net</title>
     
     
     <link href="/css/nucleus.css?1529388328" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/en/knowledge_base/multiple-identical-ingress.html">
+  <body class="" data-url="/en/day_2/service-mesh.html">
     <nav id="sidebar" class="">
 
 
@@ -358,7 +358,7 @@
   
     
     <li data-nav-id="/en/day_2.html" title="Day 2: Operations" class="dd-item 
-        
+        parent
         
         
         ">
@@ -401,7 +401,7 @@
  
   
     
-      <li data-nav-id="/en/day_2/service-mesh.html" title="Service Mesh (WIP)" class="dd-item ">
+      <li data-nav-id="/en/day_2/service-mesh.html" title="Service Mesh (WIP)" class="dd-item active">
         <a href="/en/day_2/service-mesh.html">
         Service Mesh (WIP)
         
@@ -501,7 +501,7 @@
   
     
     <li data-nav-id="/en/knowledge_base.html" title="Knowledge Base" class="dd-item 
-        parent
+        
         
         
         ">
@@ -525,7 +525,7 @@
  
   
     
-      <li data-nav-id="/en/knowledge_base/multiple-identical-ingress.html" title="" class="dd-item active">
+      <li data-nav-id="/en/knowledge_base/multiple-identical-ingress.html" title="" class="dd-item ">
         <a href="/en/knowledge_base/multiple-identical-ingress.html">
         
         
@@ -591,7 +591,7 @@
                   
                     
                     
-                      <option id="en" value="/en/knowledge_base/multiple-identical-ingress.html" selected>English</option>
+                      <option id="en" value="/en/day_2/service-mesh.html" selected>English</option>
                     
                   
               
@@ -656,7 +656,7 @@
             
           
           
-            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/knowledge_base.html'>Knowledge Base</a> > 
+            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_2.html'>Day 2: Operations</a> > Service Mesh (WIP)
           
          
           
@@ -670,9 +670,14 @@
     <div class="wrapper">
 <nav id="TableOfContents">
 <ul>
-<li><a href="#symptoms">Symptoms</a></li>
-<li><a href="#cause">Cause</a></li>
-<li><a href="#how-to-find-it">How to find it</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#further-links-alternatives">Further Links Alternatives</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
     </div>
@@ -686,7 +691,7 @@
         
         <div id="body-inner">
           
-            <h1></h1>
+            <h1>Service Mesh (WIP)</h1>
           
 
         
@@ -694,22 +699,21 @@
 
 
 
-<h1 id="symptoms">Symptoms</h1>
+<h3 id="introduction">Introduction</h3>
 
-<p>All paths of an exported resources will show <code>503 Service Temporarily Unavailable</code> for all paths.</p>
+<p>A Service Mesh allows</p>
 
-<h1 id="cause">Cause</h1>
+<p>Candidates are Linkerd, which is already build into some parts of Kubernetes, and Conduit, which is especially lightweight.</p>
 
-<p>multiple ingress objects expose the same hostname</p>
+<p>For both a multi-tenancy analysis and concept are missing as of yet.</p>
 
-<h1 id="how-to-find-it">How to find it</h1>
+<h3 id="further-links-alternatives">Further Links Alternatives</h3>
 
-<p>if <code>site.example.com</code> is the exposed name:</p>
-
-<p><code>~$  kubectl get ingress --all-namespaces -o wide | grep site.example.com
-namespace1                name-ingress         site.example.com              80, 443   4d
-mynamespace               my-ingress           site.example.com              80, 443   5d
-production                prod-ingress         site.example.com              80, 443   18h</code></p>
+<ul>
+<li>Linkerd</li>
+<li><a href="https://www.conduit.io">Conduit</a></li>
+<li><a href="https://www.istio.net">Istio</a></li>
+</ul>
 
 
 <footer class=" footline" >
@@ -972,6 +976,7 @@ production                prod-ingress         site.example.com              80,
             
                 
                     
+                    
                 
                 
 
@@ -982,6 +987,57 @@ production                prod-ingress         site.example.com              80,
                     
             
         
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
             
         
@@ -1034,58 +1090,6 @@ production                prod-ingress         site.example.com              80,
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
         
@@ -1093,10 +1097,10 @@ production                prod-ingress         site.example.com              80,
 
 
         
-            <a class="nav nav-prev" href="/en/knowledge_base.html" title="Knowledge Base"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/en/day_2/jupyter-hub.html" title="Jupyter Hub"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/en/userguide.html" title="User Guide" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/en/docs.html" title="Docs" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

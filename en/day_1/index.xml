@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Day 1: Installation and Setup on hypathia.net</title>
+    <link>/en/day_1.html</link>
+    <description>Recent content in Day 1: Installation and Setup on hypathia.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Everything is mine</copyright>
+    <lastBuildDate>Thu, 31 May 2018 06:12:26 +0200</lastBuildDate>
+    
+	<atom:link href="/en/day_1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction</title>
+      <link>/en/day_1/networking.html</link>
+      <pubDate>Thu, 31 May 2018 06:12:26 +0200</pubDate>
+      
+      <guid>/en/day_1/networking.html</guid>
+      <description> Node Network Pod Network Automatic Certificate Generation Frontend / Load Balancer Make Service available to the World  add DNS resolution for name of the service. It should resolve to the IP Address of the frontend node. add line to /etc/haproxy/sni-domains.lst on the frontend node.  </description>
+    </item>
+    
+    <item>
+      <title>Internet Protocol Address Management (IPAM)</title>
+      <link>/en/day_1/ipam.html</link>
+      <pubDate>Tue, 19 Jun 2018 06:45:19 +0200</pubDate>
+      
+      <guid>/en/day_1/ipam.html</guid>
+      <description> foo
+IP Adresses Installing the IAM Server (PowerDNS + d PXE Booting </description>
+    </item>
+    
+    <item>
+      <title>Image Management</title>
+      <link>/en/day_1/image-management.html</link>
+      <pubDate>Fri, 18 May 2018 11:15:43 +0200</pubDate>
+      
+      <guid>/en/day_1/image-management.html</guid>
+      <description> Image Proxy Cache Private Registry Registry Permissions </description>
+    </item>
+    
+  </channel>
+</rss>
