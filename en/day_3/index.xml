@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Day 3: Maintenance on hypathia.net</title>
+    <link>/en/day_3.html</link>
+    <description>Recent content in Day 3: Maintenance on hypathia.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Everything is mine</copyright>
+    
+	<atom:link href="/en/day_3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/en/day_3/os_update.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/day_3/os_update.html</guid>
+      <description> Update CoreOS nodes With the help of the CoreOs auto-updater. By setting an annotation on those machines that need to be updated:
+kubectl get nodes --context admin@hypathia | grep &amp;quot;coreos&amp;quot; | awk &#39; // { print $1 }&#39; | xargs -I NODE sh -c &#39;(kubectl annotate --context admin@hypathia --overwrite node NODE container-linux-update.v1.coreos.com/reboot-needed=&#39;true&#39;)&amp;amp;&#39;  </description>
+    </item>
+    
+  </channel>
+</rss>

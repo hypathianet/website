@@ -72,10 +72,10 @@ IP Adresses Installing the IAM Server (PowerDNS + d PXE Booting </description>
     
     <item>
       <title>Permissions</title>
-      <link>/en/docs/permissions.html</link>
+      <link>/en/day_0/permissions.html</link>
       <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
       
-      <guid>/en/docs/permissions.html</guid>
+      <guid>/en/day_0/permissions.html</guid>
       <description>User Groups User organize themself by creating projects and groups in Gitlab
 Namespace Mapping Cluster Authentication LDAP Authentication kubelogin RBAC Service Accounts Capabilities The required capabilities for Conduit (a PSP with CAP_NET_ADM activated) are made availabe via a special service account conduit. Deployments that wish to use the Service Mesh must assign the service account in der deployment description.</description>
     </item>
@@ -130,6 +130,16 @@ SlateCI A plattform for offering services within a university campus</descriptio
       <description>Take safety over security if performance is severly impacted. Take security whenever it is affordable.
 Mulit-Tenancy is hard.
 References Hard Multi-Tenancy in Kubernetes, Jessie Frazelle.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/en/day_3/os_update.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/day_3/os_update.html</guid>
+      <description> Update CoreOS nodes With the help of the CoreOs auto-updater. By setting an annotation on those machines that need to be updated:
+kubectl get nodes --context admin@hypathia | grep &amp;quot;coreos&amp;quot; | awk &#39; // { print $1 }&#39; | xargs -I NODE sh -c &#39;(kubectl annotate --context admin@hypathia --overwrite node NODE container-linux-update.v1.coreos.com/reboot-needed=&#39;true&#39;)&amp;amp;&#39;  </description>
     </item>
     
     <item>

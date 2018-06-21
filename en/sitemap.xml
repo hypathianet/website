@@ -48,6 +48,10 @@
   </url>
   
   <url>
+    <loc>/en/day_3.html</loc>
+  </url>
+  
+  <url>
     <loc>/en/day_1/ipam.html</loc>
     <lastmod>2018-06-19T06:45:19+02:00</lastmod>
   </url>
@@ -58,7 +62,11 @@
   </url>
   
   <url>
-    <loc>/en/docs/permissions.html</loc>
+    <loc>/en/userguide.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/day_0/permissions.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
@@ -110,6 +118,10 @@
   </url>
   
   <url>
+    <loc>/en/day_3/os_update.html</loc>
+  </url>
+  
+  <url>
     <loc>/en/knowledge_base/multiple-identical-ingress.html</loc>
   </url>
   
@@ -142,12 +154,6 @@
                 hreflang="en"
                 href="/en/categories/deployment.html"
                 />
-  </url>
-  
-  <url>
-    <loc>/en/docs.html</loc>
-    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -199,10 +205,6 @@
                 hreflang="en"
                 href="/en/tags.html"
                 />
-  </url>
-  
-  <url>
-    <loc>/en/userguide.html</loc>
   </url>
   
 </urlset>

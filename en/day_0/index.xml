@@ -34,6 +34,16 @@ Assumed Requirements These are the main requirements that shaped the specific ch
     </item>
     
     <item>
+      <title>Permissions</title>
+      <link>/en/day_0/permissions.html</link>
+      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
+      
+      <guid>/en/day_0/permissions.html</guid>
+      <description>User Groups User organize themself by creating projects and groups in Gitlab
+Namespace Mapping Cluster Authentication LDAP Authentication kubelogin RBAC Service Accounts Capabilities The required capabilities for Conduit (a PSP with CAP_NET_ADM activated) are made availabe via a special service account conduit. Deployments that wish to use the Service Mesh must assign the service account in der deployment description.</description>
+    </item>
+    
+    <item>
       <title>References</title>
       <link>/en/day_0/references.html</link>
       <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
