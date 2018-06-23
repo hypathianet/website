@@ -5,5 +5,4 @@ draft= false
 weight = 200
 +++
 
-# Day 1: Installation and Setup
 

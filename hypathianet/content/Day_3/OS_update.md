@@ -1,3 +1,9 @@
++++
+title = "OS Update"
+description = "Updating the node operating system."
+draft= false
+weight = 400
++++
 
 
 ### Update CoreOS nodes
