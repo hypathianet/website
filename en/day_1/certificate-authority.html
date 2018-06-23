@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="generator" content="Hugo 0.36.1" />
-    <meta name="description" content="">
+    <meta name="description" content="Communication within the cluster is secured by mutual TLS. This requires certificates for all components.">
 <meta name="author" content="Lutz Behnke">
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title> :: hypathia.net</title>
+    <title>Certificate Authority :: hypathia.net</title>
 
     
     <link href="/css/nucleus.css?1529787205" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/en/day_0/security_intro.html">
+  <body class="" data-url="/en/day_1/certificate-authority.html">
 
         <a href="https://github.com/hypathianet/website">
           <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9999"
@@ -81,7 +81,7 @@
   
     
     <li data-nav-id="/en/day_0.html" title="Day 0: Preparation" class="dd-item 
-        parent
+        
         
         
         ">
@@ -200,7 +200,7 @@
  
   
     
-      <li data-nav-id="/en/day_0/security_intro.html" title="" class="dd-item active">
+      <li data-nav-id="/en/day_0/security_intro.html" title="" class="dd-item ">
         <a href="/en/day_0/security_intro.html">
         
         
@@ -227,7 +227,7 @@
   
     
     <li data-nav-id="/en/day_1.html" title="Day 1: Installation and Setup" class="dd-item 
-        
+        parent
         
         
         ">
@@ -289,7 +289,7 @@
  
   
     
-      <li data-nav-id="/en/day_1/certificate-authority.html" title="Certificate Authority" class="dd-item ">
+      <li data-nav-id="/en/day_1/certificate-authority.html" title="Certificate Authority" class="dd-item active">
         <a href="/en/day_1/certificate-authority.html">
         Certificate Authority
         
@@ -638,7 +638,7 @@
                   
                     
                     
-                      <option id="en" value="/en/day_0/security_intro.html" selected>English</option>
+                      <option id="en" value="/en/day_1/certificate-authority.html" selected>English</option>
                     
                   
               
@@ -703,7 +703,7 @@
             
           
           
-            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_0.html'>Day 0: Preparation</a> > 
+            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_1.html'>Day 1: Installation and Setup</a> > Certificate Authority
           
         
           
@@ -719,7 +719,23 @@
 <ul>
 <li>
 <ul>
-<li><a href="#references">References</a></li>
+<li><a href="#setting-up-a-certificate-authority-and-creating-tls-certificates">Setting up a Certificate Authority and Creating TLS Certificates</a></li>
+<li><a href="#install-cfssl">Install CFSSL</a>
+<ul>
+<li><a href="#os-x">OS X</a></li>
+<li><a href="#linux">Linux</a></li>
+</ul></li>
+<li><a href="#set-up-a-certificate-authority">Set up a Certificate Authority</a></li>
+<li><a href="#generate-client-and-server-tls-certificates">Generate client and server TLS certificates</a>
+<ul>
+<li><a href="#create-the-admin-client-certificate">Create the Admin client certificate</a></li>
+<li><a href="#create-the-kube-proxy-client-certificate">Create the kube-proxy client certificate</a></li>
+<li><a href="#create-the-kube-controller-manager-client-certificate">Create the kube-controller-manager client certificate</a></li>
+<li><a href="#create-the-kube-scheduler-client-certificate">Create the kube-scheduler client certificate</a></li>
+<li><a href="#create-the-kubernetes-api-server-certificate">Create the Kubernetes API-Server certificate</a></li>
+<li><a href="#create-the-etcd-server-certificate">Create the etcd server certificate</a></li>
+</ul></li>
+<li><a href="#distribute-the-tls-certificates">Distribute the TLS certificates</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -734,7 +750,7 @@
         
         <div id="body-inner">
           
-            <h1></h1>
+            <h1>Certificate Authority</h1>
           
 
         
@@ -742,13 +758,411 @@
 
 
 
-<p>Take safety over security if performance is severly impacted. Take security whenever it is affordable.</p>
+<h2 id="setting-up-a-certificate-authority-and-creating-tls-certificates">Setting up a Certificate Authority and Creating TLS Certificates</h2>
 
-<p>Mulit-Tenancy is hard.</p>
+<p>In this lab you will setup the necessary PKI infrastructure to secure the Kubernetes components. This lab will leverage CloudFlare&rsquo;s PKI toolkit, <a href="https://github.com/cloudflare/cfssl">cfssl</a>, to bootstrap a Certificate Authority and generate TLS certificates to secure the following Kubernetes components:</p>
 
-<h2 id="references">References</h2>
+<ul>
+<li>etcd</li>
+<li>kube-apiserver</li>
+<li>kubelet</li>
+<li>kube-proxy</li>
+</ul>
 
-<p><a href="https://blog.jessfraz.com/post/hard-multi-tenancy-in-kubernetes/">Hard Multi-Tenancy in Kubernetes</a>, Jessie Frazelle.</p>
+<p>After completing this lab you should have the following TLS keys and certificates:</p>
+
+<pre><code>admin.pem
+admin-key.pem
+ca-key.pem
+ca.pem
+etcd-key.pem
+etcd.pem
+kubernetes-key.pem
+kubernetes.pem
+kube-proxy.pem
+kube-proxy-key.pem
+</code></pre>
+
+<h2 id="install-cfssl">Install CFSSL</h2>
+
+<p>This lab requires the <code>cfssl</code> and <code>cfssljson</code> binaries. Download them from the <a href="https://pkg.cfssl.org">cfssl repository</a>.</p>
+
+<h3 id="os-x">OS X</h3>
+
+<pre><code>wget https://pkg.cfssl.org/R1.2/cfssl_darwin-amd64
+chmod +x cfssl_darwin-amd64
+sudo mv cfssl_darwin-amd64 /usr/local/bin/cfssl
+</code></pre>
+
+<pre><code>wget https://pkg.cfssl.org/R1.2/cfssljson_darwin-amd64
+chmod +x cfssljson_darwin-amd64
+sudo mv cfssljson_darwin-amd64 /usr/local/bin/cfssljson
+</code></pre>
+
+<h3 id="linux">Linux</h3>
+
+<pre><code>wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
+chmod +x cfssl_linux-amd64
+sudo mv cfssl_linux-amd64 /usr/local/bin/cfssl
+</code></pre>
+
+<pre><code>wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+chmod +x cfssljson_linux-amd64
+sudo mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
+</code></pre>
+
+<h2 id="set-up-a-certificate-authority">Set up a Certificate Authority</h2>
+
+<p>Create a CA configuration file:</p>
+
+<pre><code>cat &gt; ca-config.json &lt;&lt;EOF
+{
+  &quot;signing&quot;: {
+    &quot;default&quot;: {
+      &quot;expiry&quot;: &quot;8760h&quot;
+    },
+    &quot;profiles&quot;: {
+      &quot;kubernetes&quot;: {
+        &quot;usages&quot;: [&quot;signing&quot;, &quot;key encipherment&quot;, &quot;server auth&quot;, &quot;client auth&quot;],
+        &quot;expiry&quot;: &quot;8760h&quot;
+      }
+    }
+  }
+}
+EOF
+</code></pre>
+
+<p>Create a CA certificate signing request:</p>
+
+<pre><code>cat &gt; ca-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;Kubernetes&quot;,
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 4096
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;$CERT_CA_C&quot;,
+      &quot;L&quot;: &quot;$CERT_CA_L&quot;,
+      &quot;O&quot;: &quot;$CERT_CA_OU&quot;,
+      &quot;OU&quot;: &quot;CA&quot;,
+      &quot;ST&quot;: &quot;$CERT_CA_ST&quot;
+    }
+  ]
+}
+EOF
+</code></pre>
+
+<p>Generate a CA certificate and private key:</p>
+
+<pre><code>cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+</code></pre>
+
+<p>Results:</p>
+
+<pre><code>ca-key.pem
+ca.pem
+</code></pre>
+
+<h2 id="generate-client-and-server-tls-certificates">Generate client and server TLS certificates</h2>
+
+<p>In this section we will generate TLS certificates for each Kubernetes component and a client certificate for the admin user.</p>
+
+<h3 id="create-the-admin-client-certificate">Create the Admin client certificate</h3>
+
+<p>Create the admin client certificate signing request:</p>
+
+<pre><code>cat &gt; admin-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;admin&quot;,
+  &quot;hosts&quot;: [],
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 4096
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;$CERT_CA_C&quot;,
+      &quot;L&quot;: &quot;$CERT_CA_L&quot;,
+      &quot;O&quot;: &quot;system:masters&quot;,
+      &quot;OU&quot;: &quot;Cluster&quot;,
+      &quot;ST&quot;: &quot;$CERT_CA_ST&quot;
+    }
+  ]
+}
+EOF
+</code></pre>
+
+<p>Generate the admin client certificate and private key:</p>
+
+<pre><code>cfssl gencert \
+  -ca=ca.pem \
+  -ca-key=ca-key.pem \
+  -config=ca-config.json \
+  -profile=kubernetes \
+  admin-csr.json | cfssljson -bare admin
+</code></pre>
+
+<p>Results:</p>
+
+<pre><code>admin-key.pem
+admin.pem
+</code></pre>
+
+<h3 id="create-the-kube-proxy-client-certificate">Create the kube-proxy client certificate</h3>
+
+<p>Create the kube-proxy client certificate signing request:</p>
+
+<pre><code>cat &gt; kube-proxy-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;system:kube-proxy&quot;,
+  &quot;hosts&quot;: [],
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 4096
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;$CERT_CA_C&quot;,
+      &quot;L&quot;: &quot;$CERT_CA_L&quot;,
+      &quot;O&quot;: &quot;system:node-proxier&quot;,
+      &quot;OU&quot;: &quot;Cluster&quot;,
+      &quot;ST&quot;: &quot;$CERT_CA_ST&quot;
+    }
+  ]
+}
+EOF
+</code></pre>
+
+<p>Generate the kube-proxy client certificate and private key:</p>
+
+<pre><code>cfssl gencert \
+  -ca=ca.pem \
+  -ca-key=ca-key.pem \
+  -config=ca-config.json \
+  -profile=kubernetes \
+  kube-proxy-csr.json | cfssljson -bare kube-proxy
+</code></pre>
+
+<p>Results:</p>
+
+<pre><code>kube-proxy-key.pem
+kube-proxy.pem
+</code></pre>
+
+<h3 id="create-the-kube-controller-manager-client-certificate">Create the kube-controller-manager client certificate</h3>
+
+<p>Create the kube-controller-manager client certificate signing request:</p>
+
+<pre><code>cat &gt; kube-controller-manager-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;system:kube-controller-manager&quot;,
+  &quot;hosts&quot;: [],
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 4096
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;$CERT_CA_C&quot;,
+      &quot;L&quot;: &quot;$CERT_CA_L&quot;,
+      &quot;O&quot;: &quot;system:node-controller-manager&quot;,
+      &quot;OU&quot;: &quot;Cluster&quot;,
+      &quot;ST&quot;: &quot;$CERT_CA_ST&quot;
+    }
+  ]
+}
+EOF
+</code></pre>
+
+<p>Generate the kube-controller-manager client certificate and private key:</p>
+
+<pre><code>cfssl gencert \
+  -ca=ca.pem \
+  -ca-key=ca-key.pem \
+  -config=ca-config.json \
+  -profile=kubernetes \
+  kube-controller-manager-csr.json | cfssljson -bare kube-controller-manager
+</code></pre>
+
+<p>Results:</p>
+
+<pre><code>kube-controller-manager-key.pem
+kube-controller-manager.pem
+</code></pre>
+
+<h3 id="create-the-kube-scheduler-client-certificate">Create the kube-scheduler client certificate</h3>
+
+<p>Create the kube-scheduler client certificate signing request:</p>
+
+<pre><code>cat &gt; kube-scheduler-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;system:kube-scheduler&quot;,
+  &quot;hosts&quot;: [],
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 4096
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;$CERT_CA_C&quot;,
+      &quot;L&quot;: &quot;$CERT_CA_L&quot;,
+      &quot;O&quot;: &quot;system:node-scheduler&quot;,
+      &quot;OU&quot;: &quot;Cluster&quot;,
+      &quot;ST&quot;: &quot;$CERT_CA_ST&quot;
+    }
+  ]
+}
+EOF
+</code></pre>
+
+<p>Generate the kube-scheduler client certificate and private key:</p>
+
+<pre><code>cfssl gencert \
+  -ca=ca.pem \
+  -ca-key=ca-key.pem \
+  -config=ca-config.json \
+  -profile=kubernetes \
+  kube-scheduler-csr.json | cfssljson -bare kube-scheduler
+</code></pre>
+
+<p>Results:</p>
+
+<pre><code>kube-scheduler-key.pem
+kube-scheduler.pem
+</code></pre>
+
+<h3 id="create-the-kubernetes-api-server-certificate">Create the Kubernetes API-Server certificate</h3>
+
+<p>The Kubernetes public IP address will be included in the list of subject alternative names for the Kubernetes server certificate. This will ensure the TLS certificate is valid for remote client access.</p>
+
+<p>In the ICC the public IP is assigned to the name &lsquo;icc-k8s-api.informatik.haw-hamburg.de&rsquo;</p>
+
+<pre><code>KUBERNETES_PUBLIC_ADDRESS=$(dig +short icc-k8s-api.informatik.haw-hamburg.de | tail -1)
+</code></pre>
+
+<p>Create the Kubernetes API-Server certificate signing request:</p>
+
+<pre><code>cat &gt; kubernetes-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;kubernetes&quot;,
+  &quot;hosts&quot;: [
+    &quot;10.32.0.1&quot;,
+    &quot;10.240.0.10&quot;,
+    &quot;10.240.0.11&quot;,
+    &quot;10.240.0.12&quot;,
+    &quot;$KUBERNETES_PUBLIC_ADDRESS&quot;,
+    &quot;$K8S_CONTROL_NODE_IP_ADDRS&quot;,
+    &quot;$K8S_CONTROL_NODE_NAMES&quot;,
+    &quot;$K8S_FRONTEND_IP_ADDR&quot;,
+    &quot;$K8S_FRONTEND_NAME&quot;,
+    &quot;127.0.0.1&quot;,
+    &quot;kubernetes&quot;,
+    &quot;kubernetes.default&quot;,
+    &quot;kubernetes.default.svc&quot;,
+    &quot;kubernetes.default.svc.cluster.local&quot;
+  ],
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 4096
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;$CERT_CA_C&quot;,
+      &quot;L&quot;: &quot;$CERT_CA_L&quot;,
+      &quot;O&quot;: &quot;Kubernetes&quot;,
+      &quot;OU&quot;: &quot;Cluster&quot;,
+      &quot;ST&quot;: &quot;$CERT_CA_ST&quot;
+    }
+  ]
+}
+
+EOF
+</code></pre>
+
+<p>Generate the Kubernetes certificate and private key:</p>
+
+<pre><code>cfssl gencert \
+  -ca=ca.pem \
+  -ca-key=ca-key.pem \
+  -config=ca-config.json \
+  -profile=kubernetes \
+  kubernetes-csr.json | cfssljson -bare kubernetes
+</code></pre>
+
+<p>Results:</p>
+
+<pre><code>kubernetes-key.pem
+kubernetes.pem
+</code></pre>
+
+<h3 id="create-the-etcd-server-certificate">Create the etcd server certificate</h3>
+
+<p>The IP addresses of each of the etcd nodes will be included in the list of subject alternative names for the etcd server certificate. This will ensure the TLS certificate is valid for remote client access.</p>
+
+<p>The certificate needs to include each of the names of the etcd peers</p>
+
+<p>Create the etcd server certificate signing request:</p>
+
+<pre><code>cat &gt; etcd-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;etcd&quot;,
+  &quot;hosts&quot;: [
+    &quot;icc-etcd-1.informatik.haw-hamburg.de&quot;,
+    &quot;icc-etcd-2.informatik.haw-hamburg.de&quot;,
+    &quot;icc-etcd-3.informatik.haw-hamburg.de&quot;,
+    &quot;icc-etcd-4.informatik.haw-hamburg.de&quot;,
+    &quot;icc-etcd-5.informatik.haw-hamburg.de&quot;
+  ],
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 4096
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;DE&quot;,
+      &quot;L&quot;: &quot;Hamburg&quot;,
+      &quot;O&quot;: &quot;Etcd&quot;,
+      &quot;OU&quot;: &quot;Cluster&quot;,
+      &quot;ST&quot;: &quot;Hamburg&quot;
+    }
+  ]
+}
+EOF
+</code></pre>
+
+<p>Generate the etcd certificate and private key:</p>
+
+<pre><code>cfssl gencert \
+  -ca=ca.pem \
+  -ca-key=ca-key.pem \
+  -config=ca-config.json \
+  -profile=kubernetes \
+  etcd-csr.json | cfssljson -bare etcd
+</code></pre>
+
+<p>Results:</p>
+
+<pre><code>etcd-key.pem
+etcd.pem
+</code></pre>
+
+<h2 id="distribute-the-tls-certificates">Distribute the TLS certificates</h2>
+
+<p>Set the list of Kubernetes hosts where the certs should be copied to:</p>
+
+<p>The following commands will copy the TLS certificates and keys to each Kubernetes host using the <code>gcloud compute copy-files</code> command.</p>
+
+<pre><code>for host in worker0 worker1 worker2; do
+  gcloud compute copy-files ca.pem kube-proxy.pem kube-proxy-key.pem ${host}:~/
+done
+</code></pre>
+
+<pre><code>for host in controller0 controller1 controller2; do
+  gcloud compute copy-files ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem ${host}:~/
+done
+</code></pre>
 
 
 <footer class=" footline" >
@@ -883,7 +1297,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -902,9 +1315,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -951,21 +1361,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -983,37 +1378,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1074,6 +1440,54 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1180,10 +1594,10 @@
 
 
         
-            <a class="nav nav-prev" href="/en/day_0/help_needed.html" title="Help Needed"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/en/day_1/global_config.html" title="Global Configuration"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/en/day_1.html" title="Day 1: Installation and Setup" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/en/day_1/ipam.html" title="Internet Protocol Address Management (IPAM)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

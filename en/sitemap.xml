@@ -23,6 +23,10 @@
   </url>
   
   <url>
+    <loc>/en/day_1/global_config.html</loc>
+  </url>
+  
+  <url>
     <loc>/en/blog/secure-deployment-to-k8s.html</loc>
     <lastmod>2018-05-17T11:45:40+02:00</lastmod>
     <xhtml:link
@@ -38,6 +42,10 @@
   </url>
   
   <url>
+    <loc>/en/day_1/certificate-authority.html</loc>
+  </url>
+  
+  <url>
     <loc>/en/day_1.html</loc>
     <lastmod>2018-05-31T06:12:26+02:00</lastmod>
   </url>
@@ -49,6 +57,10 @@
   
   <url>
     <loc>/en/day_3.html</loc>
+  </url>
+  
+  <url>
+    <loc>/en/day_3/os_update.html</loc>
   </url>
   
   <url>
@@ -115,10 +127,6 @@
   
   <url>
     <loc>/en/day_0/security_intro.html</loc>
-  </url>
-  
-  <url>
-    <loc>/en/day_3/os_update.html</loc>
   </url>
   
   <url>

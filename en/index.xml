@@ -43,12 +43,43 @@ Assumed Requirements These are the main requirements that shaped the specific ch
     </item>
     
     <item>
+      <title>Global Configuration</title>
+      <link>/en/day_1/global_config.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/day_1/global_config.html</guid>
+      <description>When preparing the setup of a hypathia.net cluster, you will need to collect a few pieces information. You should prepare a shell script with these variables as defined below, so you can set them before generating configuration files. The names of the config details will be used in all further configuration templates shown on this website.
+You must source the configuration file prior to the execution of any of the shell commands during the installation.</description>
+    </item>
+    
+    <item>
       <title>More Deployment Mojo</title>
       <link>/en/blog/secure-deployment-to-k8s.html</link>
       <pubDate>Thu, 17 May 2018 11:45:40 +0200</pubDate>
       
       <guid>/en/blog/secure-deployment-to-k8s.html</guid>
       <description>Deploying into the ICC Let&amp;rsquo;s assume the build pipeline of GitLab has finally succeeded and created a new container image. Naturally, now I want to have the pipeline deploy it into the cluster. Or to be more precise, to change the configuration of the cluster in such a manner, that it will pull the new image and then restart the ports according to the update rules of Deployments and Replica Sets.</description>
+    </item>
+    
+    <item>
+      <title>Certificate Authority</title>
+      <link>/en/day_1/certificate-authority.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/day_1/certificate-authority.html</guid>
+      <description>Setting up a Certificate Authority and Creating TLS Certificates In this lab you will setup the necessary PKI infrastructure to secure the Kubernetes components. This lab will leverage CloudFlare&amp;rsquo;s PKI toolkit, cfssl, to bootstrap a Certificate Authority and generate TLS certificates to secure the following Kubernetes components:
+ etcd kube-apiserver kubelet kube-proxy  After completing this lab you should have the following TLS keys and certificates:
+admin.pem admin-key.pem ca-key.pem ca.</description>
+    </item>
+    
+    <item>
+      <title>OS Update</title>
+      <link>/en/day_3/os_update.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/day_3/os_update.html</guid>
+      <description> Update CoreOS nodes With the help of the CoreOs auto-updater. By setting an annotation on those machines that need to be updated:
+kubectl get nodes --context admin@hypathia | grep &amp;quot;coreos&amp;quot; | awk &#39; // { print $1 }&#39; | xargs -I NODE sh -c &#39;(kubectl annotate --context admin@hypathia --overwrite node NODE container-linux-update.v1.coreos.com/reboot-needed=&#39;true&#39;)&amp;amp;&#39;  </description>
     </item>
     
     <item>
@@ -130,16 +161,6 @@ SlateCI A plattform for offering services within a university campus</descriptio
       <description>Take safety over security if performance is severly impacted. Take security whenever it is affordable.
 Mulit-Tenancy is hard.
 References Hard Multi-Tenancy in Kubernetes, Jessie Frazelle.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/en/day_3/os_update.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/en/day_3/os_update.html</guid>
-      <description> Update CoreOS nodes With the help of the CoreOs auto-updater. By setting an annotation on those machines that need to be updated:
-kubectl get nodes --context admin@hypathia | grep &amp;quot;coreos&amp;quot; | awk &#39; // { print $1 }&#39; | xargs -I NODE sh -c &#39;(kubectl annotate --context admin@hypathia --overwrite node NODE container-linux-update.v1.coreos.com/reboot-needed=&#39;true&#39;)&amp;amp;&#39;  </description>
     </item>
     
     <item>

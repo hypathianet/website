@@ -22,6 +22,27 @@
     </item>
     
     <item>
+      <title>Global Configuration</title>
+      <link>/en/day_1/global_config.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/day_1/global_config.html</guid>
+      <description>When preparing the setup of a hypathia.net cluster, you will need to collect a few pieces information. You should prepare a shell script with these variables as defined below, so you can set them before generating configuration files. The names of the config details will be used in all further configuration templates shown on this website.
+You must source the configuration file prior to the execution of any of the shell commands during the installation.</description>
+    </item>
+    
+    <item>
+      <title>Certificate Authority</title>
+      <link>/en/day_1/certificate-authority.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/day_1/certificate-authority.html</guid>
+      <description>Setting up a Certificate Authority and Creating TLS Certificates In this lab you will setup the necessary PKI infrastructure to secure the Kubernetes components. This lab will leverage CloudFlare&amp;rsquo;s PKI toolkit, cfssl, to bootstrap a Certificate Authority and generate TLS certificates to secure the following Kubernetes components:
+ etcd kube-apiserver kubelet kube-proxy  After completing this lab you should have the following TLS keys and certificates:
+admin.pem admin-key.pem ca-key.pem ca.</description>
+    </item>
+    
+    <item>
       <title>Internet Protocol Address Management (IPAM)</title>
       <link>/en/day_1/ipam.html</link>
       <pubDate>Tue, 19 Jun 2018 06:45:19 +0200</pubDate>

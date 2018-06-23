@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="generator" content="Hugo 0.36.1" />
-    <meta name="description" content="">
+    <meta name="description" content="Collect all the needed information before starting with the cluster setup.">
 <meta name="author" content="Lutz Behnke">
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title> :: hypathia.net</title>
+    <title>Global Configuration :: hypathia.net</title>
 
     
     <link href="/css/nucleus.css?1529787205" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/en/day_0/security_intro.html">
+  <body class="" data-url="/en/day_1/global_config.html">
 
         <a href="https://github.com/hypathianet/website">
           <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9999"
@@ -81,7 +81,7 @@
   
     
     <li data-nav-id="/en/day_0.html" title="Day 0: Preparation" class="dd-item 
-        parent
+        
         
         
         ">
@@ -200,7 +200,7 @@
  
   
     
-      <li data-nav-id="/en/day_0/security_intro.html" title="" class="dd-item active">
+      <li data-nav-id="/en/day_0/security_intro.html" title="" class="dd-item ">
         <a href="/en/day_0/security_intro.html">
         
         
@@ -227,7 +227,7 @@
   
     
     <li data-nav-id="/en/day_1.html" title="Day 1: Installation and Setup" class="dd-item 
-        
+        parent
         
         
         ">
@@ -270,7 +270,7 @@
  
   
     
-      <li data-nav-id="/en/day_1/global_config.html" title="Global Configuration" class="dd-item ">
+      <li data-nav-id="/en/day_1/global_config.html" title="Global Configuration" class="dd-item active">
         <a href="/en/day_1/global_config.html">
         Global Configuration
         
@@ -638,7 +638,7 @@
                   
                     
                     
-                      <option id="en" value="/en/day_0/security_intro.html" selected>English</option>
+                      <option id="en" value="/en/day_1/global_config.html" selected>English</option>
                     
                   
               
@@ -703,7 +703,7 @@
             
           
           
-            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_0.html'>Day 0: Preparation</a> > 
+            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_1.html'>Day 1: Installation and Setup</a> > Global Configuration
           
         
           
@@ -719,7 +719,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#references">References</a></li>
+<li><a href="#certificate-information">Certificate Information</a></li>
+<li><a href="#network">Network</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -734,7 +735,7 @@
         
         <div id="body-inner">
           
-            <h1></h1>
+            <h1>Global Configuration</h1>
           
 
         
@@ -742,13 +743,58 @@
 
 
 
-<p>Take safety over security if performance is severly impacted. Take security whenever it is affordable.</p>
+<p>When preparing the setup of a hypathia.net cluster, you will need to collect a few pieces information. You should prepare a shell script with these variables as defined below, so you can set them before generating configuration files. The names of the config details will be used in all further configuration templates shown on this website.</p>
 
-<p>Mulit-Tenancy is hard.</p>
+<p>You must source the configuration file prior to the execution of any of the shell commands during the installation.</p>
 
-<h2 id="references">References</h2>
+<pre><code>me@mynode:~$ source global_config.sh
+</code></pre>
 
-<p><a href="https://blog.jessfraz.com/post/hard-multi-tenancy-in-kubernetes/">Hard Multi-Tenancy in Kubernetes</a>, Jessie Frazelle.</p>
+<h2 id="certificate-information">Certificate Information</h2>
+
+<pre><code># CA certificate issuer Information
+CERT_CA_C=&quot;DE&quot;
+CERT_CA_L=&quot;Hamburg&quot;
+CERT_CA_O=&quot;My Fancy Cluster&quot;
+CERT_CA_ST=&quot;Hamburg&quot;
+</code></pre>
+
+<h2 id="network">Network</h2>
+
+<p>For the creation of the <code>etcd</code>, which acts as the persistent store of the cluster, you will need 5 Machines and a IP address for each. The etcd can either be run on separate physical or virtual machines separate to the cluster. Alternatively a selected set of worker nodes can be choosen.</p>
+
+<p>The IP addresses must be reachable from all worker and master nodes, but do not <em>need</em> to be public routable (The example values are not). They must not be from the <code>10.0.0.0/8</code> address space.</p>
+
+<pre><code># IP Addresses of the etcd nodes (space separated IP addrs).
+ETCD_NODES_IP_ADDRS=&quot;192.168.100.1 192.168.100.2 192.168.100.3 192.168.100.4 192.168.100.5 &quot;
+</code></pre>
+
+<p>A number of nodes must be assigned as master or control nodes. If the cluster has not much more than a dozen nodes, each worker node may also be a master node. There must be at least three master servers for high availability reasons.
+(TODO: verify this).</p>
+
+<p>These IP addresses must be reachable from all worker and other master nodes. They must be able to reach the etcd nodes. They do not need to be publicly routable.  They must not be from the <code>10.0.0.0/8</code> address space.</p>
+
+<pre><code># Control Node IPs (space separated IP addrs)
+K8S_CONTROL_NODE_IP_ADDRS=&quot;192.168.101.1 192.168.101.2 192.168.101.3
+</code></pre>
+
+<p>Nodes must be given valid DNS names that can be looked up by all components of the cluster. They should be FQDNs.</p>
+
+<pre><code>#  Control Node Names (space separated FQDNs)
+K8S_CONTROL_NODE_NAMES=&quot;ctrl1.cluster.example.com ctrl2.cluster.example.com ctrl3.cluster.example.com&quot;
+</code></pre>
+
+<p>A front end node is the single access point for the cluster. It will carry all API traffic as well as the user traffic entering and exiting the cluster. For the intended type and size of clusters, this should be sufficient as the traffic, provided it is carried over multiple 10G ethernet links, bonded to a single logical interface.</p>
+
+<p>For this front end the IP address and the FQDN name are needed. The IP address must be public routable and should be reachable from all control and worker nodes.</p>
+
+<pre><code># Front end IP addr
+K8S_FRONTEND_IP_ADDRS=&quot;141.22.10.222&quot;
+</code></pre>
+
+<pre><code># Front end node name
+K8S_FRONTEND_NAME=&quot;cluster-k8s-api.cluster.example.com&quot;
+</code></pre>
 
 
 <footer class=" footline" >
@@ -883,7 +929,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -902,9 +947,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -935,21 +977,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -967,40 +994,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1009,6 +1004,9 @@
                     
                     
 
+                    
+            
+        
                     
                         
             
@@ -1074,6 +1072,54 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1180,10 +1226,10 @@
 
 
         
-            <a class="nav nav-prev" href="/en/day_0/help_needed.html" title="Help Needed"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/en/day_1/networking.html" title="Introduction"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/en/day_1.html" title="Day 1: Installation and Setup" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/en/day_1/certificate-authority.html" title="Certificate Authority" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
