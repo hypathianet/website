@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/en/day_0/introduction.html</loc>
+    <loc>/en/day_0.html</loc>
     <lastmod>2018-05-17T06:30:49+02:00</lastmod>
   </url>
   
@@ -18,8 +18,8 @@
   </url>
   
   <url>
-    <loc>/en/day_0.html</loc>
-    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
+    <loc>/en/day_0/vision.html</loc>
+    <lastmod>2018-06-27T11:40:18+02:00</lastmod>
   </url>
   
   <url>
@@ -39,6 +39,11 @@
                 hreflang="en"
                 href="/en/blog/secure-deployment-to-k8s.html"
                 />
+  </url>
+  
+  <url>
+    <loc>/en/day_0/architecture.html</loc>
+    <lastmod>2018-06-27T11:40:18+02:00</lastmod>
   </url>
   
   <url>
@@ -182,7 +187,7 @@
   
   <url>
     <loc>/en/</loc>
-    <lastmod>2018-05-17T06:30:49+02:00</lastmod>
+    <lastmod>2018-05-30T16:29:59+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="de"

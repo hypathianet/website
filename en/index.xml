@@ -7,21 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Everything is mine</copyright>
-    <lastBuildDate>Thu, 17 May 2018 06:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 May 2018 16:29:59 +0200</lastBuildDate>
     
 	<atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Introduction</title>
-      <link>/en/day_0/introduction.html</link>
-      <pubDate>Thu, 17 May 2018 06:30:49 +0200</pubDate>
-      
-      <guid>/en/day_0/introduction.html</guid>
-      <description>Mission hypathia.net aims to provide a blueprint for operating a service to provide cloud based computing resources in a self-service manner. It presents an opinionated selection of components, configurations and practices tailored to environments that have a specific set of requirements, often found at academic institutions.
-Assumed Requirements These are the main requirements that shaped the specific characteristics of hypathia.net:
- The organisation cannot use computing resources of a public cloud provider This may be due to procurement rules, legal obligations or the wish to run highly sensitive workloads in-house, rather than on hardware that the organization has virtually no control over.</description>
-    </item>
     
     <item>
       <title>Prerequisites</title>
@@ -43,6 +32,16 @@ Assumed Requirements These are the main requirements that shaped the specific ch
     </item>
     
     <item>
+      <title>Vision</title>
+      <link>/en/day_0/vision.html</link>
+      <pubDate>Wed, 27 Jun 2018 11:40:18 +0200</pubDate>
+      
+      <guid>/en/day_0/vision.html</guid>
+      <description>The long term vision of the documentation presented in this website is provide a template for Kubernetes installations that support users with highly variable skillsets and a excessive range of the workload size. Users may include people who have never written a programm in their live as well as top-range researchers.
+The system should provide the necessary aids and user interfaces to allow the writing of simple software without the need to install any local components.</description>
+    </item>
+    
+    <item>
       <title>Global Configuration</title>
       <link>/en/day_1/global_config.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -59,6 +58,16 @@ You must source the configuration file prior to the execution of any of the shel
       
       <guid>/en/blog/secure-deployment-to-k8s.html</guid>
       <description>Deploying into the ICC Let&amp;rsquo;s assume the build pipeline of GitLab has finally succeeded and created a new container image. Naturally, now I want to have the pipeline deploy it into the cluster. Or to be more precise, to change the configuration of the cluster in such a manner, that it will pull the new image and then restart the ports according to the update rules of Deployments and Replica Sets.</description>
+    </item>
+    
+    <item>
+      <title>Architecture</title>
+      <link>/en/day_0/architecture.html</link>
+      <pubDate>Wed, 27 Jun 2018 11:40:18 +0200</pubDate>
+      
+      <guid>/en/day_0/architecture.html</guid>
+      <description>Architecture Overview  Hypathia.net Architecture   A Hypatha.net cluster is constructured from the following main components:
+ a Gitlab instance to hold the source and configuration data of the projects to be run on the cluster. It also acts as user interface for users to create projects and organize users into groups the actual Kubernetes cluster, running on a number of worker nodes. Each node also runs the pods neccesary to be the master node, but only one will be active at any time.</description>
     </item>
     
     <item>
