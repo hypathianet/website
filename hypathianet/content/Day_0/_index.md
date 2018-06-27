@@ -23,11 +23,11 @@ All documents on the site will be provided in multiple languages, initially Engl
 These are the main requirements that shaped the specific characteristics of hypathia.net:
 
 <dl>
- <dt>The organisation cannot use computing resources of a public cloud provider</dt>
+ <dt>The organization cannot use computing resources of a public cloud provider</dt>
  <dd>This may be due to procurement rules, legal obligations or the wish to run highly 
  sensitive workloads in-house, rather than on hardware that the organization has virtually no control over.</dd>
  <dt>The smallest workloads can be <em>very</em> small.</dt>
- <dd>While a cluster build from hypathia.net can run applications that span hundreds of nodes, it will also efficiently handle minimalistic experiments that consist of a single web-page, requested only a handfull of times by a single user.</dd>
+ <dd>While a cluster build from hypathia.net can run applications that span hundreds of nodes, it will also efficiently handle minimalistic experiments that consist of a single web-page, requested only a handful of times by a single user.</dd>
  <dt>Users cannot be assumed to be able to run their own cluster</dt>
  <dd>Actually running a Kubernetes cluster takes quite some expertise and time. Requiring every user to do this is not only inefficient with regard to the time of the user, but also makes efficient sharing of computing resources much more complex than need be. Especially when ombined with the previous requirement of very small workloads.</dd>
  <dt>Minimal support resources available </dt>
