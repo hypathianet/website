@@ -44,16 +44,6 @@ There are a number of further goals that the design of the cluster strives to su
 
 <img style="width: 8em; display: block; margin-left: auto; margin-right: auto;" alt="No Pets allowed" src="/img/docs/introduction/no_pets_allowed.png"/>
 
-### Resultant Architecture
-
-* [Gitlab](https://about.gitlab.com) as main user interface for group management and version control, collaboration and communication. It also acts as the source of truth for user permissions and artifact ownership. While the Enterprise version offers usefull additional functions, for operating a hypathia-style cluster, the open-source version is sufficient.
-
-* [Kubernetes](https://kubernetes.io) in a multi-tenant configuration for orchestrating containers based applications.
-* Container Linux as operating system for nodes. The current phase of restructuring of the project makes it unclear whether the [version offered by CoreOs](https://coreos.com/os/docs/latest/), the division of RedHat Inc. or by [Flatcar](https://www.flatcar-linux.org/), the version forked by the original authors is more ideally suited. We will keep you posted.
-
-* [Ceph](https://ceph.com/) as storage solution. This is provided to an Hypathia K8s cluster via the [Rook](https://rook.io/) project.
-
-* LDAP for password and identity management. This can be provided via a number of solutions.
 
 ### Origins
 

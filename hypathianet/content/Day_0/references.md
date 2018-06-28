@@ -15,6 +15,10 @@ toc = true
 
 A orchestration plattwork to help manage container based application.
 
+### Kubernetes Cluster Setup Projects
+
+* [eznetes](https://github.com/roffe/eznetes): Kubernetes the semi-hard way, a set of documents and shell scripts to semi automate the setup and maintenance of a on-prem cluster on bare-metal machines running CoreOS Container Linux. 
+
 ### Other Tools for Computational Science
 
 #### Joint Roadmap for Open Science Tools ([JROST.org](https://jrost.org))
