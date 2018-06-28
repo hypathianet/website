@@ -12,17 +12,17 @@
     <title>Architecture :: hypathia.net</title>
 
     
-    <link href="/css/nucleus.css?1530113435" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1530113435" rel="stylesheet">
-    <link href="/css/hybrid.css?1530113435" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1530113435" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1530113435" rel="stylesheet">
-    <link href="/css/auto-complete.css?1530113435" rel="stylesheet">
-    <link href="/css/theme.css?1530113435" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1530113435" rel="stylesheet">
+    <link href="/css/nucleus.css?1530184884" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1530184884" rel="stylesheet">
+    <link href="/css/hybrid.css?1530184884" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1530184884" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1530184884" rel="stylesheet">
+    <link href="/css/auto-complete.css?1530184884" rel="stylesheet">
+    <link href="/css/theme.css?1530184884" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1530184884" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1530113435"></script>
+    <script src="/js/jquery-2.x.min.js?1530184884"></script>
 
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1530113435"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1530113435"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1530184884"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1530184884"></script>
 <script type="text/javascript">
     
         var baseurl = "\/en";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1530113435"></script>
+<script type="text/javascript" src="/js/search.js?1530184884"></script>
 
     
   </div>
@@ -562,9 +562,28 @@
  
   
     
-      <li data-nav-id="/en/knowledge_base/multiple-identical-ingress.html" title="" class="dd-item ">
-        <a href="/en/knowledge_base/multiple-identical-ingress.html">
+      <li data-nav-id="/en/knowledge_base/hyperkube-coreos-to-gcrio.html" title="CNI Plugin not found" class="dd-item ">
+        <a href="/en/knowledge_base/hyperkube-coreos-to-gcrio.html">
+        CNI Plugin not found
         
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/en/knowledge_base/multiple-identical-ingress.html" title="Ingress Name Collision" class="dd-item ">
+        <a href="/en/knowledge_base/multiple-identical-ingress.html">
+        Ingress Name Collision
         
         </a>
     </li>
@@ -777,12 +796,21 @@
 </figure>
 
 
-<p>A Hypatha.net cluster is constructured from the following main components:</p>
+<p>A Hypatha.net cluster is constructed from the following main components:</p>
 
 <ul>
-<li>a Gitlab instance to hold the source and configuration data of the projects to be run on the cluster. It also acts as user interface for users to create projects and organize users into groups</li>
-<li>the actual Kubernetes cluster, running on a number of worker nodes. Each node also runs the pods neccesary to be the master node, but only one will be active at any time. Some of the worker nodes also operate elements of the etcd cluster to hold the state of the Kubernetes cluster.</li>
+<li><p><a href="https://about.gitlab.com">Gitlab</a> as main user interface for group management and version control, collaboration and communication. It also acts as the source of truth for user permissions and artifact ownership. While the Enterprise version offers useful additional functions, for operating a Hypathia-style cluster, the open-source version is sufficient.</p></li>
+
+<li><p><a href="https://kubernetes.io">Kubernetes</a> in a multi-tenant configuration for orchestrating containers based applications. The cluster runs on a number of worker nodes. Each node runs the pods necessary to be the master node, but only one will be active at any time (selected by Kubernetes via a <a href="https://en.wikipedia.org/wiki/Leader_election">Leader Election</a>. Some of the worker nodes also operate elements of the etcd cluster to hold the state of the Kubernetes cluster. Other nodes may have special hardware, like dedicated GPGPU cards.</p></li>
+
+<li><p>Container Linux as operating system for nodes. The current phase of restructuring of the project makes it unclear whether the <a href="https://coreos.com/os/docs/latest/">version offered by CoreOs</a>, the division of RedHat Inc. or by <a href="https://www.flatcar-linux.org/">Flatcar</a>, the version forked by the original authors is more ideally suited. We will keep you posted.</p></li>
+
+<li><p><a href="https://ceph.com/">Ceph</a> as storage solution. This is provided to an Hypathia K8s cluster via the <a href="https://rook.io/">Rook</a> project.</p></li>
+
+<li><p>LDAP for password and identity management. This can be provided via a number of solutions.</p></li>
 </ul>
+
+<p>Currently there are two sets of service components that are available twice each: the image registry and the DHCP server. Both have sets of features, that are not completely covered by either implementation and thus both are needed to operate the Hypathia.net installation.</p>
 
 
 <footer class=" footline" >
@@ -1188,6 +1216,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1242,20 +1286,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1530113435"></script>
-    <script src="/js/perfect-scrollbar.min.js?1530113435"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1530113435"></script>
-    <script src="/js/jquery.sticky.js?1530113435"></script>
-    <script src="/js/featherlight.min.js?1530113435"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1530113435"></script>
-    <script src="/js/highlight.pack.js?1530113435"></script>
+    <script src="/js/clipboard.min.js?1530184884"></script>
+    <script src="/js/perfect-scrollbar.min.js?1530184884"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1530184884"></script>
+    <script src="/js/jquery.sticky.js?1530184884"></script>
+    <script src="/js/featherlight.min.js?1530184884"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1530184884"></script>
+    <script src="/js/highlight.pack.js?1530184884"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1530113435"></script>
-    <script src="/js/learn.js?1530113435"></script>
-    <script src="/js/hugo-learn.js?1530113435"></script>
+    <script src="/js/modernizr.custom.71422.js?1530184884"></script>
+    <script src="/js/learn.js?1530184884"></script>
+    <script src="/js/hugo-learn.js?1530184884"></script>
 
-    <link href="/mermaid/mermaid.css?1530113435" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1530113435"></script>
+    <link href="/mermaid/mermaid.css?1530184884" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1530184884"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

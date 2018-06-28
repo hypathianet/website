@@ -18,6 +18,16 @@
   </url>
   
   <url>
+    <loc>/en/knowledge_base/hyperkube-coreos-to-gcrio.html</loc>
+    <lastmod>2018-06-27T11:40:18+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/en/knowledge_base/multiple-identical-ingress.html</loc>
+    <lastmod>2018-06-27T11:40:18+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/en/day_0/vision.html</loc>
     <lastmod>2018-06-27T11:40:18+02:00</lastmod>
   </url>
@@ -98,6 +108,7 @@
   
   <url>
     <loc>/en/knowledge_base.html</loc>
+    <lastmod>2018-06-27T11:40:18+02:00</lastmod>
   </url>
   
   <url>
@@ -132,10 +143,6 @@
   
   <url>
     <loc>/en/day_0/security_intro.html</loc>
-  </url>
-  
-  <url>
-    <loc>/en/knowledge_base/multiple-identical-ingress.html</loc>
   </url>
   
   <url>

@@ -28,7 +28,7 @@
       <pubDate>Wed, 27 Jun 2018 11:40:18 +0200</pubDate>
       
       <guid>/en/day_0/vision.html</guid>
-      <description>The long term vision of the documentation presented in this website is provide a template for Kubernetes installations that support users with highly variable skillsets and a excessive range of the workload size. Users may include people who have never written a programm in their live as well as top-range researchers.
+      <description>The long term vision of the documentation presented in this website is provide a template for Kubernetes installations that support users with highly variable skill sets and a excessive range of the workload size. Users may include people who have never written a program in their live as well as top-range researchers.
 The system should provide the necessary aids and user interfaces to allow the writing of simple software without the need to install any local components.</description>
     </item>
     
@@ -38,8 +38,9 @@ The system should provide the necessary aids and user interfaces to allow the wr
       <pubDate>Wed, 27 Jun 2018 11:40:18 +0200</pubDate>
       
       <guid>/en/day_0/architecture.html</guid>
-      <description>Architecture Overview  Hypathia.net Architecture   A Hypatha.net cluster is constructured from the following main components:
- a Gitlab instance to hold the source and configuration data of the projects to be run on the cluster. It also acts as user interface for users to create projects and organize users into groups the actual Kubernetes cluster, running on a number of worker nodes. Each node also runs the pods neccesary to be the master node, but only one will be active at any time.</description>
+      <description>Architecture Overview  Hypathia.net Architecture   A Hypatha.net cluster is constructed from the following main components:
+ Gitlab as main user interface for group management and version control, collaboration and communication. It also acts as the source of truth for user permissions and artifact ownership. While the Enterprise version offers useful additional functions, for operating a Hypathia-style cluster, the open-source version is sufficient.
+ Kubernetes in a multi-tenant configuration for orchestrating containers based applications.</description>
     </item>
     
     <item>
@@ -59,8 +60,7 @@ Namespace Mapping Cluster Authentication LDAP Authentication kubelogin RBAC Serv
       
       <guid>/en/day_0/references.html</guid>
       <description>Components of the hypathia.net Kubernetes (Kubernetes.io) A orchestration plattwork to help manage container based application.
-Other Tools for Computational Science Joint Roadmap for Open Science Tools (JROST.org) A community working on a joint roadmap for open science tools.
-SlateCI A plattform for offering services within a university campus</description>
+Kubernetes Cluster Setup Projects  eznetes: Kubernetes the semi-hard way, a set of documents and shell scripts to semi automate the setup and maintenance of a on-prem cluster on bare-metal machines running CoreOS Container Linux.  Other Tools for Computational Science Joint Roadmap for Open Science Tools (JROST.org) A community working on a joint roadmap for open science tools.</description>
     </item>
     
     <item>

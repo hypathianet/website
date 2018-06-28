@@ -32,12 +32,36 @@
     </item>
     
     <item>
+      <title>CNI Plugin not found</title>
+      <link>/en/knowledge_base/hyperkube-coreos-to-gcrio.html</link>
+      <pubDate>Wed, 27 Jun 2018 11:40:18 +0200</pubDate>
+      
+      <guid>/en/knowledge_base/hyperkube-coreos-to-gcrio.html</guid>
+      <description>toc = true
+Symptoms Hyperkube image loaded from gcr.io instead of quay.io will fail to load CNI plugin with the log message
+Error adding network: failed to find plugin &amp;quot;calico&amp;quot; in path [/opt/calico/bin /opt/cni/bin]  Cause Other than the image provided CoreOs, the one provided by Google does not contain the CNI plugins. They need to be loaded from the host disk and the necessary directory need to be mapped as devices into the kubelet container</description>
+    </item>
+    
+    <item>
+      <title>Ingress Name Collision</title>
+      <link>/en/knowledge_base/multiple-identical-ingress.html</link>
+      <pubDate>Wed, 27 Jun 2018 11:40:18 +0200</pubDate>
+      
+      <guid>/en/knowledge_base/multiple-identical-ingress.html</guid>
+      <description>Symptoms All paths of an exported resources will show 503 Service Temporarily Unavailable for all paths.
+Cause multiple ingress objects expose the same hostname
+How to find it if site.example.com is the exposed name:
+~$ kubectl get ingress --all-namespaces -o wide | grep site.example.com namespace1 name-ingress site.example.com 80, 443 4d mynamespace my-ingress site.example.com 80, 443 5d production prod-ingress site.example.com 80, 443 18h 
+How to fix it delete all but one of the ingresses.</description>
+    </item>
+    
+    <item>
       <title>Vision</title>
       <link>/en/day_0/vision.html</link>
       <pubDate>Wed, 27 Jun 2018 11:40:18 +0200</pubDate>
       
       <guid>/en/day_0/vision.html</guid>
-      <description>The long term vision of the documentation presented in this website is provide a template for Kubernetes installations that support users with highly variable skillsets and a excessive range of the workload size. Users may include people who have never written a programm in their live as well as top-range researchers.
+      <description>The long term vision of the documentation presented in this website is provide a template for Kubernetes installations that support users with highly variable skill sets and a excessive range of the workload size. Users may include people who have never written a program in their live as well as top-range researchers.
 The system should provide the necessary aids and user interfaces to allow the writing of simple software without the need to install any local components.</description>
     </item>
     
@@ -66,8 +90,9 @@ You must source the configuration file prior to the execution of any of the shel
       <pubDate>Wed, 27 Jun 2018 11:40:18 +0200</pubDate>
       
       <guid>/en/day_0/architecture.html</guid>
-      <description>Architecture Overview  Hypathia.net Architecture   A Hypatha.net cluster is constructured from the following main components:
- a Gitlab instance to hold the source and configuration data of the projects to be run on the cluster. It also acts as user interface for users to create projects and organize users into groups the actual Kubernetes cluster, running on a number of worker nodes. Each node also runs the pods neccesary to be the master node, but only one will be active at any time.</description>
+      <description>Architecture Overview  Hypathia.net Architecture   A Hypatha.net cluster is constructed from the following main components:
+ Gitlab as main user interface for group management and version control, collaboration and communication. It also acts as the source of truth for user permissions and artifact ownership. While the Enterprise version offers useful additional functions, for operating a Hypathia-style cluster, the open-source version is sufficient.
+ Kubernetes in a multi-tenant configuration for orchestrating containers based applications.</description>
     </item>
     
     <item>
@@ -148,8 +173,7 @@ Further Links Alternatives  Linkerd Conduit Istio  </description>
       
       <guid>/en/day_0/references.html</guid>
       <description>Components of the hypathia.net Kubernetes (Kubernetes.io) A orchestration plattwork to help manage container based application.
-Other Tools for Computational Science Joint Roadmap for Open Science Tools (JROST.org) A community working on a joint roadmap for open science tools.
-SlateCI A plattform for offering services within a university campus</description>
+Kubernetes Cluster Setup Projects  eznetes: Kubernetes the semi-hard way, a set of documents and shell scripts to semi automate the setup and maintenance of a on-prem cluster on bare-metal machines running CoreOS Container Linux.  Other Tools for Computational Science Joint Roadmap for Open Science Tools (JROST.org) A community working on a joint roadmap for open science tools.</description>
     </item>
     
     <item>
@@ -170,18 +194,6 @@ SlateCI A plattform for offering services within a university campus</descriptio
       <description>Take safety over security if performance is severly impacted. Take security whenever it is affordable.
 Mulit-Tenancy is hard.
 References Hard Multi-Tenancy in Kubernetes, Jessie Frazelle.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/en/knowledge_base/multiple-identical-ingress.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/en/knowledge_base/multiple-identical-ingress.html</guid>
-      <description>Symptoms All paths of an exported resources will show 503 Service Temporarily Unavailable for all paths.
-Cause multiple ingress objects expose the same hostname
-How to find it if site.example.com is the exposed name:
-~$ kubectl get ingress --all-namespaces -o wide | grep site.example.com namespace1 name-ingress site.example.com 80, 443 4d mynamespace my-ingress site.example.com 80, 443 5d production prod-ingress site.example.com 80, 443 18h</description>
     </item>
     
     <item>
