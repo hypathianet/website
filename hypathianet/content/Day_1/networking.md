@@ -2,7 +2,7 @@
 date = "2018-05-31T06:12:26+02:00"
 weight = 3
 description = "Networking, including name resolution via DNS and IP Address Management (IAM)"
-title = "Introduction"
+title = "Networking"
 draft = false
 bref= "Network management in an Kubernetes cluster encompasses two vital areas: mangement of the node network, from the physical medium up to the addresses of the nodes of the cluster. And the network topology and infrastructure to connect the pods and containers running within the cluster."
 toc = true
