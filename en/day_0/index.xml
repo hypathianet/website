@@ -19,7 +19,7 @@
       
       <guid>/en/day_0/prerequisites.html</guid>
       <description>Infrastructure Environment You will need
- a network with Internet access as well as a sufficient number of available IP addresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. a DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). entries for all your users in an Directory System that allows access via LDAP.</description>
+ A etwork with Internet access as well as a sufficient number of available IP addresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. A DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). Entries for all your users in an Directory System that allows access via LDAP.</description>
     </item>
     
     <item>
@@ -69,7 +69,8 @@ Kubernetes Cluster Setup Projects  eznetes: Kubernetes the semi-hard way, a set 
       <pubDate>Fri, 18 May 2018 11:15:43 +0200</pubDate>
       
       <guid>/en/day_0/help_needed.html</guid>
-      <description>Currently the are a number of holes in the automation of the hypathia system. It should be possible to close them, with the construction of a number of operators and controllers for the kubernetes system. An overview can be seen in this graphic:  Kubernetes Tenant Ecosystem   OwnerListAdmissionController In order to use tools like Draft, users have to be able to list namespaces. But as granting this right would result in exposing the information about other users namespaces, this is not permitted in the current settings.</description>
+      <description>Currently, the are a number of holes in the automation of the hypathia system. There are also parts that are unnecessarily complex. Most of these are the result of the organic growth of the system from it&amp;rsquo;s original incubation invironment.
+Infrastructure Deploy Configuration Management System Hypathia.net has grown out of an environment that uses Puppet for configuration management. But this requires further infrastructure that is not worthwhile for setting up the few pet nodes that make up the Hypathia.</description>
     </item>
     
     <item>

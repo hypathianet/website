@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="generator" content="Hugo 0.36.1" />
-    <meta name="description" content="The visiosn statement for the Hypathia.net project">
+    <meta name="description" content="Installation of GitLab">
 <meta name="author" content="Lutz Behnke">
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Vision :: hypathia.net</title>
+    <title>GitLab :: hypathia.net</title>
 
     
     <link href="/css/nucleus.css?1530266033" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/en/day_0/vision.html">
+  <body class="" data-url="/en/day_1/gitlab.html">
 
         <a href="https://github.com/hypathianet/website">
           <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9999"
@@ -81,7 +81,7 @@
   
     
     <li data-nav-id="/en/day_0.html" title="Day 0: Introduction" class="dd-item 
-        parent
+        
         
         
         ">
@@ -124,7 +124,7 @@
  
   
     
-      <li data-nav-id="/en/day_0/vision.html" title="Vision" class="dd-item active">
+      <li data-nav-id="/en/day_0/vision.html" title="Vision" class="dd-item ">
         <a href="/en/day_0/vision.html">
         Vision
         
@@ -246,7 +246,7 @@
   
     
     <li data-nav-id="/en/day_1.html" title="Day 1: Installation and Setup" class="dd-item 
-        
+        parent
         
         
         ">
@@ -327,7 +327,7 @@
  
   
     
-      <li data-nav-id="/en/day_1/gitlab.html" title="GitLab" class="dd-item ">
+      <li data-nav-id="/en/day_1/gitlab.html" title="GitLab" class="dd-item active">
         <a href="/en/day_1/gitlab.html">
         GitLab
         
@@ -695,7 +695,7 @@
                   
                     
                     
-                      <option id="en" value="/en/day_0/vision.html" selected>English</option>
+                      <option id="en" value="/en/day_1/gitlab.html" selected>English</option>
                     
                   
               
@@ -760,7 +760,7 @@
             
           
           
-            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_0.html'>Day 0: Introduction</a> > Vision
+            <a href='/en/'>Kubernetes Stack for Academia</a> > <a href='/en/day_1.html'>Day 1: Installation and Setup</a> > GitLab
           
         
           
@@ -772,7 +772,20 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#create-a-gitlab-instance">Create a GitLab Instance</a>
+<ul>
+<li><a href="#postgresql-database-server">Postgresql Database server</a></li>
+<li><a href="#web-application">Web Application</a></li>
+<li><a href="#background-information">Background Information</a></li>
+<li><a href="#support-and-gitlab-version">Support and GitLab Version</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -784,17 +797,73 @@
         
         <div id="body-inner">
           
-            <h1>Vision</h1>
+            <h1>GitLab</h1>
           
 
         
 
 
-<p>The long term vision of the documentation presented in this website is provide a template for Kubernetes installations that support users with highly variable skill sets and a excessive range of the workload size. Users may include people who have never written a program in their live as well as top-range researchers.</p>
 
-<p>The system should provide the necessary aids and user interfaces to allow the writing of simple software without the need to install any local components. It should at the same time teach the basics of version control, automatic build and automatic testing as part of the daily work by the users.</p>
 
-<p>As users are getting more and more experienced in developing and designing software, learning programming languages and paradigms, the can peel back more and more of the layers of tooling and user interface.  In the end they will have access to the full range of functionality of the Kubernetes cluster.</p>
+<h2 id="create-a-gitlab-instance">Create a GitLab Instance</h2>
+
+<ol>
+<li>Install three machines (virtual or physical) with the current Ubuntu LTS with the following minimal requirements in the following order:
+
+<ol>
+<li>The PostgreSQL Database machine: 2 Cores, 8GB RAM, 100GB system and database disk.</li>
+<li>The GitLab Web Application: 2 cores, 8GB RAM, 16GB system disk, sufficient storage for user data. 1TB per 1000 Users as a very rough estimate.</li>
+<li>The GitLab Runner: 2 Cores, 2GB RAM, 16 GB system disk</li>
+</ol></li>
+</ol>
+
+<p>more details can be found on the <a href="https://about.gitlab.com/installation/#ubuntu">GitLab installation page</a></p>
+
+<h3 id="postgresql-database-server">Postgresql Database server</h3>
+
+<p>You could install the PostgreSQL Database manually, but using the GitLab Omnibus distribution make this much easier.</p>
+
+<pre><code>#
+# set up database via the gitlab configuraion method
+
+external_url 'https://${GITLAB_EXTERNAL_HOST}'
+
+# Disable all components except PostgreSQL
+postgresql['enable'] = true
+bootstrap['enable'] = false
+nginx['enable'] = false
+unicorn['enable'] = false
+sidekiq['enable'] = false
+redis['enable'] = false
+gitlab_workhorse['enable'] = false
+mailroom['enable'] = false
+
+# PostgreSQL configuration
+gitlab_rails['db_password'] = '${GITLAB_DB_PASSWORD}'
+gitlab_rails['auto_migrate'] = false
+
+postgresql['md5_auth_cidr_addresses'] = ['0.0.0.0/0']
+postgresql['listen_address'] = '0.0.0.0'
+
+</code></pre>
+
+<h3 id="web-application">Web Application</h3>
+
+<h3 id="background-information">Background Information</h3>
+
+<p>The separation of the GitLab web application from the database allows a stepwise extension of the installation to support growing user demands. The above values are sufficient to support about a 1000 users in an academic environment (students and faculty). Depending on the type of organization this may vary widely.</p>
+
+<p>The setup documented here is a minimal variant of the <a href="https://docs.gitlab.com/ee/administration/high_availability/README.html">HA installation</a> documented by GitLab. It is not the fully fledged HA and scale-out version. Rather it is a more reduced one that is future proof, but avoids the high overhead as long there is no initial need for it.</p>
+
+<p>GitLab also offers a variant of the system to run inside the cluster itself with the help of a prepared <a href="https://docs.gitlab.com/ee/install/kubernetes/">Helm chart</a>. But that adds the problem of a chicken-and-egg problem if either should fail and the separate setup avoids this complexity. The Hypathia.net design contains of two pets that contain the source of truth and help manage the whole system: the etcd database and the GitLab installation.</p>
+
+<h3 id="support-and-gitlab-version">Support and GitLab Version</h3>
+
+<p>This documentation assumes that the community version of GitLab is used in setting up the cluster environment. It is available as open source and licensed under the MIT License.</p>
+
+<p>For most academic organizations, GitLab offers also the much extended Ultimate Version free of charge, but without support.</p>
+
+<p>There are also support contracts available with academic pricing.</p>
 
 
 <footer class=" footline" >
@@ -865,122 +934,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                 
                 
 
@@ -1120,6 +1073,122 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1274,10 +1343,10 @@
 
 
         
-            <a class="nav nav-prev" href="/en/day_0/prerequisites.html" title="Prerequisites"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/en/day_1/certificate-authority.html" title="Certificate Authority"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/en/day_0/architecture.html" title="Architecture" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/en/day_1/ipam.html" title="Internet Protocol Address Management (IPAM)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

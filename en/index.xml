@@ -19,11 +19,11 @@
       
       <guid>/en/day_0/prerequisites.html</guid>
       <description>Infrastructure Environment You will need
- a network with Internet access as well as a sufficient number of available IP addresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. a DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). entries for all your users in an Directory System that allows access via LDAP.</description>
+ A etwork with Internet access as well as a sufficient number of available IP addresses. Be sure to allow for growth (even when successful beyond your wildest dreams!). Migrating the cluster from one network to another is possible, but not for the faint of heart. A DNS domain and a mechanism to integrate it with your super-domain (eg. compute-cloud.example.com). Entries for all your users in an Directory System that allows access via LDAP.</description>
     </item>
     
     <item>
-      <title>Introduction</title>
+      <title>Networking</title>
       <link>/en/day_1/networking.html</link>
       <pubDate>Thu, 31 May 2018 06:12:26 +0200</pubDate>
       
@@ -107,6 +107,15 @@ admin.pem admin-key.pem ca-key.pem ca.</description>
     </item>
     
     <item>
+      <title>GitLab</title>
+      <link>/en/day_1/gitlab.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/en/day_1/gitlab.html</guid>
+      <description>Create a GitLab Instance  Install three machines (virtual or physical) with the current Ubuntu LTS with the following minimal requirements in the following order:  The PostgreSQL Database machine: 2 Cores, 8GB RAM, 100GB system and database disk. The GitLab Web Application: 2 cores, 8GB RAM, 16GB system disk, sufficient storage for user data. 1TB per 1000 Users as a very rough estimate. The GitLab Runner: 2 Cores, 2GB RAM, 16 GB system disk   more details can be found on the GitLab installation page</description>
+    </item>
+    
+    <item>
       <title>OS Update</title>
       <link>/en/day_3/os_update.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -182,7 +191,8 @@ Kubernetes Cluster Setup Projects  eznetes: Kubernetes the semi-hard way, a set 
       <pubDate>Fri, 18 May 2018 11:15:43 +0200</pubDate>
       
       <guid>/en/day_0/help_needed.html</guid>
-      <description>Currently the are a number of holes in the automation of the hypathia system. It should be possible to close them, with the construction of a number of operators and controllers for the kubernetes system. An overview can be seen in this graphic:  Kubernetes Tenant Ecosystem   OwnerListAdmissionController In order to use tools like Draft, users have to be able to list namespaces. But as granting this right would result in exposing the information about other users namespaces, this is not permitted in the current settings.</description>
+      <description>Currently, the are a number of holes in the automation of the hypathia system. There are also parts that are unnecessarily complex. Most of these are the result of the organic growth of the system from it&amp;rsquo;s original incubation invironment.
+Infrastructure Deploy Configuration Management System Hypathia.net has grown out of an environment that uses Puppet for configuration management. But this requires further infrastructure that is not worthwhile for setting up the few pet nodes that make up the Hypathia.</description>
     </item>
     
     <item>

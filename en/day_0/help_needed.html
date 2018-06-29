@@ -12,17 +12,17 @@
     <title>Help Needed :: hypathia.net</title>
 
     
-    <link href="/css/nucleus.css?1530184884" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1530184884" rel="stylesheet">
-    <link href="/css/hybrid.css?1530184884" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1530184884" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1530184884" rel="stylesheet">
-    <link href="/css/auto-complete.css?1530184884" rel="stylesheet">
-    <link href="/css/theme.css?1530184884" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1530184884" rel="stylesheet">
+    <link href="/css/nucleus.css?1530266033" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1530266033" rel="stylesheet">
+    <link href="/css/hybrid.css?1530266033" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1530266033" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1530266033" rel="stylesheet">
+    <link href="/css/auto-complete.css?1530266033" rel="stylesheet">
+    <link href="/css/theme.css?1530266033" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1530266033" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1530184884"></script>
+    <script src="/js/jquery-2.x.min.js?1530266033"></script>
 
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1530184884"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1530184884"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1530266033"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1530266033"></script>
 <script type="text/javascript">
     
         var baseurl = "\/en";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1530184884"></script>
+<script type="text/javascript" src="/js/search.js?1530266033"></script>
 
     
   </div>
@@ -270,9 +270,9 @@
  
   
     
-      <li data-nav-id="/en/day_1/networking.html" title="Introduction" class="dd-item ">
+      <li data-nav-id="/en/day_1/networking.html" title="Networking" class="dd-item ">
         <a href="/en/day_1/networking.html">
-        Introduction
+        Networking
         
         </a>
     </li>
@@ -311,6 +311,25 @@
       <li data-nav-id="/en/day_1/certificate-authority.html" title="Certificate Authority" class="dd-item ">
         <a href="/en/day_1/certificate-authority.html">
         Certificate Authority
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/en/day_1/gitlab.html" title="GitLab" class="dd-item ">
+        <a href="/en/day_1/gitlab.html">
+        GitLab
         
         </a>
     </li>
@@ -757,7 +776,12 @@
 <ul>
 <li>
 <ul>
-<li>
+<li><a href="#infrastructure">Infrastructure</a>
+<ul>
+<li><a href="#deploy-configuration-management-system">Deploy Configuration Management System</a></li>
+<li><a href="#unify-dhcp-server">Unify DHCP Server</a></li>
+</ul></li>
+<li><a href="#cluster-components">Cluster Components</a>
 <ul>
 <li><a href="#ownerlistadmissioncontroller">OwnerListAdmissionController</a></li>
 <li><a href="#cleanupoperator">CleanupOperator</a></li>
@@ -789,7 +813,28 @@
 
 
 
-<p>Currently the are a number of holes in the automation of the hypathia system. It should be possible to close them, with the construction of a number of operators and controllers for the kubernetes system. An overview can be seen in this graphic:
+<p>Currently, the are a number of holes in the automation of the hypathia system.
+There are also parts that are unnecessarily complex. Most of these are the result of the organic growth of the system from it&rsquo;s original incubation invironment.</p>
+
+<h2 id="infrastructure">Infrastructure</h2>
+
+<h3 id="deploy-configuration-management-system">Deploy Configuration Management System</h3>
+
+<p>Hypathia.net has grown out of an environment that uses <a href="https://puppet.com/#">Puppet</a> for configuration management. But this requires further infrastructure that is not worthwhile for setting up the few pet nodes that make up the Hypathia.net bootstrap infrastructure.</p>
+
+<p>Terraform is used to set up the configuration of the Matchbox server, but not utilized for the other machines.</p>
+
+<p>Any new (or old) system should allow the step-by-step installation of all components of the system, be easily readable by humans and not require an additional server/infrastructure setup.</p>
+
+<h3 id="unify-dhcp-server">Unify DHCP Server</h3>
+
+<p>Currently there are separate DHCP servers for distributing IP addresses and for injecting node identity and configuration information. The reason for this is the lack of LDAP backend support of the matchbox server.</p>
+
+<p>A solution to merge the configuration data to a single source of truth is needed.</p>
+
+<h2 id="cluster-components">Cluster Components</h2>
+
+<p>It should be possible to close them, with the construction of a number of operators and controllers for the kubernetes system. An overview can be seen in this graphic:
 
 <figure >
     
@@ -810,15 +855,25 @@
 
 <p>The OwnerListAdmissionController must retrieve the information to which namespaces the calling account has access to from either the GitLab directly or better yet from a ownership service running within the cluster. It then must filter all requests for namespaces to only return those that the user has permission to read from.</p>
 
+<p>(work in progress: will ask K8s API for information on namespaces and their rolebinding)</p>
+
 <h3 id="cleanupoperator">CleanupOperator</h3>
 
+<p>(work in progress)</p>
+
 <h3 id="tenantoperator">TenantOperator</h3>
+
+<p>(work in progress: read Tenant CRD, create/maintain namespaces, RoleBinding)</p>
 
 <h3 id="tenantquotaadmissioncontroller">TenantQuotaAdmissionController</h3>
 
 <h3 id="tamiasui">TamiasUI</h3>
 
+<p>(work in progress)</p>
+
 <h3 id="dnsingresscontroller">DNSIngressController</h3>
+
+<p>(aka CName-Svc)</p>
 
 <h3 id="hapingresscontroller">HAPIngressController</h3>
 
@@ -1001,6 +1056,22 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1296,20 +1367,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1530184884"></script>
-    <script src="/js/perfect-scrollbar.min.js?1530184884"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1530184884"></script>
-    <script src="/js/jquery.sticky.js?1530184884"></script>
-    <script src="/js/featherlight.min.js?1530184884"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1530184884"></script>
-    <script src="/js/highlight.pack.js?1530184884"></script>
+    <script src="/js/clipboard.min.js?1530266033"></script>
+    <script src="/js/perfect-scrollbar.min.js?1530266033"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1530266033"></script>
+    <script src="/js/jquery.sticky.js?1530266033"></script>
+    <script src="/js/featherlight.min.js?1530266033"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1530266033"></script>
+    <script src="/js/highlight.pack.js?1530266033"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1530184884"></script>
-    <script src="/js/learn.js?1530184884"></script>
-    <script src="/js/hugo-learn.js?1530184884"></script>
+    <script src="/js/modernizr.custom.71422.js?1530266033"></script>
+    <script src="/js/learn.js?1530266033"></script>
+    <script src="/js/hugo-learn.js?1530266033"></script>
 
-    <link href="/mermaid/mermaid.css?1530184884" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1530184884"></script>
+    <link href="/mermaid/mermaid.css?1530266033" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1530266033"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
